@@ -15,7 +15,7 @@ class HeaderHome extends Component {
           <ul className="nav-items-right">
             <Link to="/mySiftz">
               <li>
-                <p>My Shiftz</p>
+                <p>My Siftz</p>
               </li>
             </Link>
             <Link to="/search">

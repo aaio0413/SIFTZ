@@ -11,7 +11,7 @@ class Home extends Component {
         <HeaderHome />
         <div className="main-picture">
           <h3 className="marketing-blurp">
-            プレミアム SHIFTZ で人生をもっと快適に過ごそう。
+            プレミアム SIFTZ で人生をもっと快適に過ごそう。
           </h3>
         </div>
         <div className="container main-container">
