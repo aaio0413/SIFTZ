@@ -7,7 +7,7 @@ class HeaderLogin extends Component {
     return (
       <header className="header-index">
         <Link to="/" className="titleColorAdjust">
-          <h2 className="main-title">SHIFTZ</h2>
+          <h2 className="main-title">SIFTZ</h2>
         </Link>
       </header>
     );

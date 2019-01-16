@@ -9,7 +9,7 @@ class HeaderHome extends Component {
     return (
       <header className="header-main">
         <Link to="/">
-          <h2 className="main-main-title">SHIFTZ</h2>
+          <h2 className="main-main-title">SIFTZ</h2>
         </Link>
         <div className="nav-right">
           <ul className="nav-items-right">
