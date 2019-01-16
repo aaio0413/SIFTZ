@@ -1,10 +1,16 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 import Home from "./components/Home";
 import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
 import SignUp from "./components/SignUp";
-import Login from "./components/Login";
+import LogIn from "./components/LogIn";
 // import { RedirectUser } from "./components/Login/RedirectUser";
 
 class App extends Component {
@@ -21,7 +27,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
@@ -39,11 +45,11 @@ class App extends Component {
           <Route
             path="/login"
             // component={this.state.isloggedin ? Login : Login}
-            component={Login}
+            component={LogIn}
           />
           <Route exact path="*" component={Home} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

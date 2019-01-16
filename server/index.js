@@ -3,6 +3,7 @@ const express = require("express");
 const authRoutes = require("./routers/auth-routes");
 const myShiftzRoutes = require("./routers/myShiftz-routes");
 const path = require("path");
+const morgan = require("morgan");
 const passportSetup = require("./config/passport-setup");
 const mongodb = require("mongoose");
 const cookieSession = require("cookie-session");
@@ -14,8 +15,6 @@ const app = express();
 
 // app.use(express.static(__dirname + "/public"));
 app.use(express.static(path.resolve(__dirname, "..", "..", "public")));
-// app.set("view engine", "pug");
-// app.set("views", path.join(__dirname, "./views"));
 
 //cookie setUp
 
@@ -60,6 +59,20 @@ mongodb.connect(
 //     throw err;
 //   });
 // });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+if (process.env.NODE_ENV === "test") app.use(morgan(() => null));
+else
+  app.use(
+    morgan(
+      "API Request (port " +
+        this.port +
+        "): :method :url :status :response-time ms - :res[content-length]"
+    )
+  );
 
 app.listen(process.env.PORT || 3090, () => {
   console.log("app now listening for requests on port 3090");
