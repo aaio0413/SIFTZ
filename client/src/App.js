@@ -5,7 +5,7 @@ import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
-import { RedirectUser } from "./components/Login/RedirectUser";
+// import { RedirectUser } from "./components/Login/RedirectUser";
 
 class App extends Component {
   constructor(props) {

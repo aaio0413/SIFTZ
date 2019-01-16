@@ -1,26 +1,40 @@
 import React, { Component } from "react";
 import "./HeaderHome.css";
-import SignUpBtn from "../SignUpBtn";
-import LogInBtn from "../LogInBtn";
+// import SignUpButton from "../SignupButton";
+// import LoginButton from "../LoginButton";
 import { Link } from "react-router-dom";
 
 class HeaderHome extends Component {
   render() {
     return (
-      <header className="header">
-        <nav className="navbar bg-ds-blue fixed-top">
-          {/* add router to the anchor tag */}
-          <Link to="/">
-            <div className="navbar-brand">
-              <span className="devstart-brand">SIFTZ</span>
-            </div>
-          </Link>
-
-          <div className="header-component-right">
-            <SignUpBtn />
-            <LogInBtn />
-          </div>
-        </nav>
+      <header className="header-main">
+        <Link to="/">
+          <h2 className="main-main-title">SHIFTZ</h2>
+        </Link>
+        <div className="nav-right">
+          <ul className="nav-items-right">
+            <Link to="/mySiftz">
+              <li>
+                <p>My Shiftz</p>
+              </li>
+            </Link>
+            <Link to="/search">
+              <li>
+                <p>How you feelin'?</p>
+              </li>
+            </Link>
+            <Link to="/signup">
+              <li>
+                <p>Signup</p>
+              </li>
+            </Link>
+            <Link to="/login">
+              <li>
+                <p>Login</p>
+              </li>
+            </Link>
+          </ul>
+        </div>
       </header>
     );
   }

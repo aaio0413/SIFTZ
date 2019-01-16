@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
-const authRoutes = require("./routes/auth-routes");
-const myShiftzRoutes = require("./routes/myShiftz-routes");
+const authRoutes = require("./routers/auth-routes");
+const myShiftzRoutes = require("./routers/myShiftz-routes");
 const path = require("path");
 const passportSetup = require("./config/passport-setup");
 const mongodb = require("mongoose");
@@ -12,9 +12,10 @@ const app = express();
 
 // set view engine
 
-app.use(express.static(__dirname + "/public"));
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "./views"));
+// app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.resolve(__dirname, "..", "..", "public")));
+// app.set("view engine", "pug");
+// app.set("views", path.join(__dirname, "./views"));
 
 //cookie setUp
 
@@ -60,6 +61,11 @@ mongodb.connect(
 //   });
 // });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("app now listening for requests on port 3000");
+app.listen(process.env.PORT || 3090, () => {
+  console.log("app now listening for requests on port 3090");
+});
+
+process.on("SIGINT", function() {
+  console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
+  process.exit();
 });
