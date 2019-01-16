@@ -1,0 +1,42 @@
+{
+  "name": "siftz",
+  "version": "1.0.0",
+  "description": "music connoisseur app",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaio0413/SIFTZ.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaio0413/SIFTZ/issues"
+  },
+  "homepage": "https://github.com/aaio0413/SIFTZ#readme",
+  "scripts": {
+    "test": "test",
+    "setup": "yarn install && cd client && yarn install",
+    "build": "node internals/scripts/build.js",
+    "deploy": "yarn build && yarn checkout",
+    "checkout": "git checkout -b deploy && yarn run add",
+    "add": "git add -f client/build && yarn run commit",
+    "commit": "git commit -m \"deploy\" && yarn run push",
+    "push": "git push -f heroku deploy:master && yarn run master",
+    "master": "git checkout master && yarn run delete",
+    "delete": "git branch -D deploy",
+    "start": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+    "client": "node internals/scripts/client.js",
+    "server": "nodemon --watch server server/index.js",
+    "server-prod": "node server/index.js"
+  },
+  "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.0",
+    "nodemon": "^1.18.8",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
