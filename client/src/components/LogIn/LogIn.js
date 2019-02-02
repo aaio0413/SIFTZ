@@ -19,7 +19,7 @@ class LogIn extends React.Component {
             <button className="facebook-button">LOGIN WITH FACEBOOK</button>
             <button className="instagram-button">LOGIN WITH INSTAGRAM</button>
 
-            <a className="gmail-button" href="api/auth/google">
+            <a className="gmail-button" href="/api/auth/google">
               LOGIN WITH GMAIL
             </a>
           </section>

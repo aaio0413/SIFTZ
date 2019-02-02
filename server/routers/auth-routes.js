@@ -32,9 +32,16 @@ router.get(
 router.get(
   "/google/redirect",
   passport.authenticate("google", { failureRedirect: "/login" }),
+  (err, req, res, next) => {
+    if (err.name === "TokenError") {
+      res.redirect("http://localhost:3000/login"); // for local
+    } else {
+      // Handle other errors here
+    }
+  },
   (req, res) => {
+    res.redirect("http://localhost:3000/mySiftz/");
     //res.send(req.user);
-    res.redirect("/myShiftz");
   }
 );
 

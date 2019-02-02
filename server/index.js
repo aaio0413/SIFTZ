@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const authRoutes = require("./routers/auth-routes");
-const myShiftzRoutes = require("./routers/myShiftz-routes");
+const mySiftzRoutes = require("./routers/mySiftz-routes");
 const path = require("path");
 const morgan = require("morgan");
 const passportSetup = require("./config/passport-setup");
@@ -12,7 +12,8 @@ const proxy = require("http-proxy-middleware");
 
 const app = express();
 
-app.use(proxy("http://localhost:3000"));
+// app.use(proxy("http://localhost:3000"));
+// app.use(proxy("/api", { target: "http://localhost:3090/" }));
 
 // app.use(express.static(__dirname + "/public"));
 app.use(express.static(path.resolve(__dirname, "..", "..", "public")));
@@ -38,11 +39,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // set up routes
-app.use("api/auth", authRoutes);
-app.use("api/myShiftz", myShiftzRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/mySiftz", mySiftzRoutes);
 
 // create home route
-app.get("api/", (req, res) => {
+app.get("/", (req, res) => {
   res.render("index");
 });
 
