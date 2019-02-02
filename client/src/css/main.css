@@ -82,7 +82,8 @@ a:hover {
 }
 
 .gmail-button {
-  color: white;
+  text-align: center;
+  line-height: 55px;
   font-weight: 800;
   background-color: #c74343;
   border-radius: 2rem;

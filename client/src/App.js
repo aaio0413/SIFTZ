@@ -35,11 +35,11 @@ class App extends Component {
             // component={this.state.isloggedin ? MySiftz : Login}
             component={MySiftz}
           />
-          <Route
+          {/* <Route
             path="/search"
             // component={this.state.isloggedin ? Search : Login}
             component={Search}
-          />
+          /> */}
           <Route exact path="/signup" component={SignUp} />
 
           <Route

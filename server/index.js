@@ -8,10 +8,11 @@ const passportSetup = require("./config/passport-setup");
 const mongodb = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+const proxy = require("http-proxy-middleware");
 
 const app = express();
 
-// set view engine
+app.use(proxy("http://localhost:3000"));
 
 // app.use(express.static(__dirname + "/public"));
 app.use(express.static(path.resolve(__dirname, "..", "..", "public")));
@@ -25,27 +26,31 @@ app.use(
   })
 );
 
+// if (env.isDevelopment()) {
+//   const proxy = require("express-http-proxy");
+//   app.use("/*", proxy("http://localhost:3000"));
+// } else {
+//   // probably serve up build version in production
+// }
+
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
 // set up routes
-app.use("/auth", authRoutes);
-app.use("/myShiftz", myShiftzRoutes);
+app.use("api/auth", authRoutes);
+app.use("api/myShiftz", myShiftzRoutes);
 
 // create home route
-app.get("/", (req, res) => {
+app.get("api/", (req, res) => {
   res.render("index");
 });
 
 console.log("this is process.env here", process.env.MONGO_DB_URL);
 //connect mongoDB
-mongodb.connect(
-  process.env.MONGO_DB_URL,
-  () => {
-    console.log("connected mongoDB");
-  }
-);
+mongodb.connect(process.env.MONGO_DB_URL, () => {
+  console.log("connected mongoDB");
+});
 
 // app.get("*", (req, res) => {
 //   res.render("static" + req.url, function(err, html) {
