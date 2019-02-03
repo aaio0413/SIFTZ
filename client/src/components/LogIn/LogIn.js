@@ -16,9 +16,12 @@ class LogIn extends React.Component {
         <HeaderLogin />
         <div className="login-form">
           <section className="signUp-with">
-            <button className="facebook-button">LOGIN WITH FACEBOOK</button>
-            <button className="instagram-button">LOGIN WITH INSTAGRAM</button>
-
+            <a className="facebook-button" href="/api/auth/facebook">
+              LOGIN WITH Facebook
+            </a>
+            <a className="instagram-button" href="/api/auth/instagram">
+              LOGIN WITH Instagram
+            </a>
             <a className="gmail-button" href="/api/auth/google">
               LOGIN WITH GMAIL
             </a>
