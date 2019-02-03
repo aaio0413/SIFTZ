@@ -59,6 +59,8 @@ a:hover {
 }
 
 .facebook-button {
+  text-align: center;
+  line-height: 55px;
   font-weight: 800;
   color: white;
   background-color: rgb(63, 80, 169);
@@ -68,6 +70,8 @@ a:hover {
 }
 
 .instagram-button {
+  text-align: center;
+  line-height: 55px;
   font-weight: 800;
   color: white;
   /* background-color: rgb(63, 80, 169); */

@@ -27,11 +27,43 @@ router.get(
     scope: ["profile"] //add whatever you want from user
   })
 );
-
+router.get("/instagram", passport.authenticate("instagram"));
+router.get("/facebook", passport.authenticate("facebook"));
 //auth callback from google
 router.get(
   "/google/redirect",
   passport.authenticate("google", { failureRedirect: "/login" }),
+  (err, req, res, next) => {
+    if (err.name === "TokenError") {
+      res.redirect("http://localhost:3000/login"); // for local
+    } else {
+      // Handle other errors here
+    }
+  },
+  (req, res) => {
+    res.redirect("http://localhost:3000/mySiftz/");
+    //res.send(req.user);
+  }
+);
+router.get(
+  "/instagram/redirect",
+  passport.authenticate("instagram", { failureRedirect: "/login" }),
+  (err, req, res, next) => {
+    if (err.name === "TokenError") {
+      res.redirect("http://localhost:3000/login"); // for local
+    } else {
+      // Handle other errors here
+    }
+  },
+  (req, res) => {
+    res.redirect("http://localhost:3000/mySiftz/");
+    //res.send(req.user);
+  }
+);
+
+router.get(
+  "/facebook/redirect",
+  passport.authenticate("facebook", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
       res.redirect("http://localhost:3000/login"); // for local
