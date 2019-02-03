@@ -18,9 +18,10 @@ class LogIn extends React.Component {
           <section className="signUp-with">
             <button className="facebook-button">LOGIN WITH FACEBOOK</button>
             <button className="instagram-button">LOGIN WITH INSTAGRAM</button>
-            <button className="gmail-button">
-              <Link to="/auth/google">LOGIN WITH GMAIL</Link>
-            </button>
+
+            <a className="gmail-button" href="/api/auth/google">
+              LOGIN WITH GMAIL
+            </a>
           </section>
           <strong className="line-thru">or</strong>
 
@@ -41,7 +42,7 @@ class LogIn extends React.Component {
               <div className="form-group col-md-6">
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="inputPassword4"
                   placeholder="Confirm Email"
                 />
@@ -50,7 +51,7 @@ class LogIn extends React.Component {
             <div className="form-group">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="inputAddress"
                 placeholder="Password"
               />
@@ -59,10 +60,10 @@ class LogIn extends React.Component {
               <div className="form-check">
                 <input
                   type="checkbox"
-                  class="form-check-input"
+                  className="form-check-input"
                   id="exampleCheck1"
                 />
-                <label className="form-check-label" for="exampleCheck1">
+                <label className="form-check-label" htmlFor="exampleCheck1">
                   Remember me
                 </label>
               </div>
