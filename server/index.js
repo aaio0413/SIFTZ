@@ -63,11 +63,18 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
 
-console.log("this is process.env here", process.env.MONGO_DB_URL);
+// console.log("this is process.env here", process.env.MONGO_DB_URL);
 //connect mongoDB
 mongodb.connect(process.env.MONGO_DB_URL, () => {
   console.log("connected mongoDB");
 });
+
+// let db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+
+// db.once('open', function callback() {
+
+// }
 
 // app.get("*", (req, res) => {
 //   res.render("static" + req.url, function(err, html) {
