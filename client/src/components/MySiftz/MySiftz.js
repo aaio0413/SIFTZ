@@ -19,11 +19,13 @@ class MySiftz extends React.Component {
     //     this.setQuery(data);
     //   });
 
-    fetch("http://localhost:3090/api/mySiftz/allNightSongs/", {
+    fetch("http://localhost:3090/api/mySiftz/allNightSongs", {
       headers: { crossDomain: true }
     }).then(res => {
       console.log("this is result", res);
     });
+
+    console.log("well first off, is this working?, ----- YES");
 
     // fetch("http://localhost:3090/api/mySiftz/allNightSongs/").then(result => {
     //   console.log("this is result", result);

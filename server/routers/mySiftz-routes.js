@@ -1,25 +1,34 @@
 const router = require("express").Router();
 const mongodb = require("mongoose");
 
-const authCheck = (req, res, next) => {
-  if (!req.user) {
-    //if user is not logged in
-    res.redirect("/");
-  } else {
-    next();
-  }
-};
+// const authCheck = (req, res, next) => {
+//   if (!req.user) {
+//     //if user is not logged in
+//     res.redirect("http://localhost:3000/login");
+//   } else {
+//     next();
+//   }
+// };
 
 // router.get("/", authCheck, (req, res) => {
 //   console.log(req.user);
 //   res.render("mySiftz", { userName: req.user.userName });
 // });
 
-router.get("/allNightSongs", authCheck, (req, res) => {
-  console.log("this is request", req);
-  const data = mongodb.songs.findAll({ "Night(pm6~am5)": 1 });
-  // res.send(data);
-  console.log("trying to get", data);
+//connect mongoDB
+// var db = mongodb.connect(process.env.MONGO_DB_URL);
+
+// console.log(db);
+// db = connect(process.env.MONGO_DB_URL)
+
+router.get("/allNightSongs", (req, res) => {
+  // console.log(req.user);
+  console.log("response", res);
+});
+
+router.post("/allNightSongs", (req, res) => {
+  // console.log(req.user);
+  console.log("response", res);
 });
 
 module.exports = router;

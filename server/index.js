@@ -6,6 +6,10 @@ const path = require("path");
 const morgan = require("morgan");
 const passportSetup = require("./config/passport-setup");
 const mongodb = require("mongoose");
+
+const MongoClient = require("mongodb").MongoClient;
+const assert = require("assert");
+
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
@@ -55,6 +59,7 @@ app.use(cors());
 // });
 
 // set up routes
+console.log("this is app", app);
 app.use("/api/auth", authRoutes);
 app.use("/api/mySiftz", mySiftzRoutes);
 
@@ -62,11 +67,16 @@ app.use("/api/mySiftz", mySiftzRoutes);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
+var globalVaribleThatIsDB = "Jameela";
+// console.log("this is process.env here", process.env.MONGO_DB_URL);
+MongoClient.connect(process.env.MONGO_DB_URL, (err, client) => {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
 
-console.log("this is process.env here", process.env.MONGO_DB_URL);
-//connect mongoDB
-mongodb.connect(process.env.MONGO_DB_URL, () => {
-  console.log("connected mongoDB");
+  const db = client.db("shiftz-oauth");
+
+  console.log(db);
+  client.close();
 });
 
 // app.get("*", (req, res) => {
