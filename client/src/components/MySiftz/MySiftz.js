@@ -8,7 +8,7 @@ class MySiftz extends React.Component {
     super(props);
 
     this.state = {
-      songData: "this is stuff"
+      data: "this is stuff"
     };
   }
 
@@ -22,13 +22,15 @@ class MySiftz extends React.Component {
       })
       .then(songData => {
         console.log(songData);
+        this.setState({ data: songData });
+        console.log("lets see what is the state", this.state.data);
         this._fetchSongReqeust = null;
-        this.setState({ songData });
       });
 
     // trimmingUrl(this.songData.url).then(url => {
     //   this.setState({});
     // });
+    // console.log("lets see what is the state", this.state.data);
   }
 
   trimmingUrl(originalUrl) {
@@ -93,7 +95,7 @@ class MySiftz extends React.Component {
             </div>
             <div className="row">
               <div className="col-3">
-                <SongCard songInfo={this.state.songData} />
+                <SongCard songInfo={this.state.data} />
               </div>
             </div>
           </div>

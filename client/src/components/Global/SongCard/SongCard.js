@@ -78,7 +78,7 @@ realUlr = "https://img.youtube.com/vi/"+videoUrl+"/0.jpg"
         src={urlToImage(props.songInfo.url)}
         alt="song img"
       />
-      {/* src={props.song.img}  */}
+
       <div className="card-body card-body2">
         <div className="avator">
           <img
