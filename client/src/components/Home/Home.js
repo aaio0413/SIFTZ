@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import HeaderHome from "../Global/HeaderHome";
-import SongCard from "../Global/SongCard";
+import SongCard from "../SongCard";
 import "../../css/main.css";
 import "./Home.css";
 
@@ -19,10 +19,10 @@ class Home extends Component {
             <h2>Songs people are sharing</h2>
           </div>
           <div className="row">
+            {/* <SongCard />
             <SongCard />
             <SongCard />
-            <SongCard />
-            <SongCard />
+            <SongCard /> */}
           </div>
         </div>
       </Fragment>

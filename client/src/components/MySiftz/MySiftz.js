@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import HeaderHome from "../Global/HeaderHome";
-import SongCard from "../Global/SongCard";
+import SongCard from "../SongCard";
 // import axios from "axios";
 
 class MySiftz extends React.Component {
@@ -30,7 +30,7 @@ class MySiftz extends React.Component {
     // trimmingUrl(this.songData.url).then(url => {
     //   this.setState({});
     // });
-    // console.log("lets see what is the state", this.state.data);
+    console.log("lets see what is the state", this.state.data);
   }
 
   trimmingUrl(originalUrl) {
