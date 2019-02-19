@@ -6,7 +6,7 @@ var urlToImage = function(videoUrl) {
   if (videoUrl) {
     console.log("vidoe url", videoUrl);
     let realUrl = "";
-    const criticalIndex = videoUrl.lastIndexOf("=");
+    const criticalIndex = videoUrl.indexOf("=");
     if (criticalIndex > 0)
       videoUrl = videoUrl.substring(criticalIndex + 1, videoUrl.length);
     realUrl = "https://img.youtube.com/vi/" + videoUrl + "/0.jpg";

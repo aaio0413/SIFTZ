@@ -41,8 +41,8 @@ router.get("/search/:time", (req, res) => {
 
   Songs.find({ [timeQuery]: [1] }).then(songsForNight => {
     if (songsForNight) {
-      console.log("songs found!!", songsForNight[0]);
-      res.send(songsForNight[0]);
+      console.log("songs found!!", songsForNight);
+      res.send(songsForNight);
       res.end("ending session ;)");
     } else {
       console.log("songs are not found :(");

@@ -12,6 +12,15 @@ class MySiftz extends React.Component {
     };
   }
 
+  createSongCard = data => {
+    let songCards = [];
+    for (let i = 0; i < 12; i++) {
+      songCards.push(<SongCard songInfo={data[i]} key={data[i]._id} />);
+      console.log("this is what you're passing to the component", data[i]);
+    }
+    return songCards;
+  };
+
   componentDidMount() {
     this._fetchSongReqeust = fetch("/api/mySiftz/search/night", {
       headers: { crossDomain: true }
@@ -23,7 +32,10 @@ class MySiftz extends React.Component {
       .then(songData => {
         console.log(songData);
         this.setState({ data: songData });
-        console.log("lets see what is the state", this.state.data);
+        console.log(
+          "lets see what is the state data index 0",
+          this.state.data[0]
+        );
         this._fetchSongReqeust = null;
       });
 
@@ -40,31 +52,6 @@ class MySiftz extends React.Component {
     realUrl = "https://img.youtube.com/vi/" + originalUrl + "/0.jpg";
     return realUrl;
   }
-
-  createSongCard(data) {
-    // for(let i=0; i < 13; i++) {
-    //   let aSong =[]
-    //   for(let j=0; j < i.length; j++) {
-    //     aSong.push(j);
-    //   }
-    //   <SongCard songInfo={aSong}/>
-    // }
-  }
-
-  // componentWillMount() {
-  //   this.fectchSongs();
-  //   console.log(this.state.SongData);
-  // fetch("http://localhost:3090/api/mySiftz/search/night", {
-  //   headers: { crossDomain: true }
-  // }).then(res => {
-  //   console.log("this is result", res);
-  // });
-  // fetch("http://localhost:3090/api/mySiftz/allNightSongs/").then(result => {
-  //   console.log("this is result", result);
-  //   // return result.json();
-  //   // this.setQuery(JSON.parse(result.data));
-  // });
-  // }
 
   // setQuery = result => {
   //   this.setState({ query: result });
@@ -91,12 +78,15 @@ class MySiftz extends React.Component {
         <div className="body-background1">
           <div className="container main-container">
             <div className="first-text-wrapper2">
-              <h2>Songs You Shared Recently</h2>
+              <h2>今の時間帯にぴったりの曲。</h2>
             </div>
             <div className="row">
-              <div className="col-3">
-                <SongCard songInfo={this.state.data} />
-              </div>
+              {/* <div className="col-3"> */}
+              {this.createSongCard(this.state.data)}
+              {}
+              {/* <SongCard songInfo={this.state.data} /> */}
+              {/* <SongCard songInfo={this.state.data} /> */}
+              {/* </div> */}
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ class Home extends Component {
         </div>
         <div className="container main-container">
           <div className="first-text-wrapper">
-            <h2>Songs people are sharing</h2>
+            {/* <h2>Songs people are sharing</h2> */}
           </div>
           <div className="row">
             {/* <SongCard />
