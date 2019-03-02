@@ -15,7 +15,7 @@ class MySiftz extends React.Component {
   createSongCard = data => {
     let songCards = [];
     for (let i = 0; i < 12; i++) {
-      songCards.push(<SongCard songInfo={data[i]} key={data[i]._id} />);
+      songCards.push(<SongCard songInfo={data[i]} key={i} />);
       console.log("this is what you're passing to the component", data[i]);
     }
     return songCards;
