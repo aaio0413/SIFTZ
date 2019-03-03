@@ -53,10 +53,6 @@ class MySiftz extends React.Component {
     return realUrl;
   }
 
-  // setQuery = result => {
-  //   this.setState({ query: result });
-  // };
-
   // ###############################################MAPPING FUNCTION
   //         var names = ['Jake', 'Jon', 'Thruster'];
   //         var namesList = names.map(function(name){

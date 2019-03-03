@@ -52,4 +52,29 @@ router.get("/search/:time", (req, res) => {
   });
 });
 
+router.get("/search/songParam/:searchQuery", (req, res) => {
+  let searcher = req.params.searchQuery;
+  let searchQueryForDatabase = [];
+
+  searcher = searcher.split("+");
+  console.log("this is searcher", searcher);
+
+  for (let i = 0; i < searcher.length; i++) {
+    searchQueryForDatabase.push(`${searcher[i]}:[1]`);
+  }
+  console.log(searchQueryForDatabase.toString());
+  // finalQuery = searchQueryForDatabase.toString();
+  Songs.find({ inside: 1, alone: 1, activeFeeling: 1 }).then(songsRequested => {
+    if (songsRequested) {
+      console.log("songs found!!", JSON(songsRequested));
+      res.send(songsRequested);
+      res.end("ending session ;)");
+    } else {
+      console.log("songs are not found :(");
+      res.send("there's no song for night");
+      res.end("ending session ;)");
+    }
+  });
+});
+
 module.exports = router;
