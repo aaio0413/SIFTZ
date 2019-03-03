@@ -64,17 +64,19 @@ router.get("/search/songParam/:searchQuery", (req, res) => {
   }
   console.log(searchQueryForDatabase.toString());
   // finalQuery = searchQueryForDatabase.toString();
-  Songs.find({ inside: 1, alone: 1, activeFeeling: 1 }).then(songsRequested => {
-    if (songsRequested) {
-      console.log("songs found!!", JSON(songsRequested));
-      res.send(songsRequested);
-      res.end("ending session ;)");
-    } else {
-      console.log("songs are not found :(");
-      res.send("there's no song for night");
-      res.end("ending session ;)");
+  Songs.find({ inside: [1], alone: [1], activeFeeling: [1] }).then(
+    songsRequested => {
+      if (songsRequested) {
+        console.log("songs found!!", songsRequested);
+        res.send(songsRequested);
+        res.end("ending session ;)");
+      } else {
+        console.log("songs are not found :(");
+        res.send("there's no song for night");
+        res.end("ending session ;)");
+      }
     }
-  });
+  );
 });
 
 module.exports = router;

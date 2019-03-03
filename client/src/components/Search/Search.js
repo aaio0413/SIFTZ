@@ -3,7 +3,6 @@ import HeaderHome from "../Global/HeaderHome";
 import SongCard from "../SongCard";
 import "../../css/main.css";
 import "./Search.css";
-import { runInNewContext } from "vm";
 
 class Search extends Component {
   constructor(props) {
@@ -56,7 +55,7 @@ class Search extends Component {
         this.setState({ songData: songData });
         console.log(
           "lets see what is the state data index 0",
-          this.state.data[0]
+          this.state.songData[0]
         );
         this._fetchSongReqeust = null;
       });
@@ -111,7 +110,7 @@ class Search extends Component {
                 </button>
                 <button
                   className="clikable-search"
-                  id="search-others"
+                  id=""
                   onClick={this.onClick}
                 >
                   おまかせ
@@ -155,7 +154,7 @@ class Search extends Component {
                 </button>
                 <button
                   className="clikable-search"
-                  id="search-others"
+                  id=""
                   onClick={this.onClick}
                 >
                   おまかせ
@@ -187,6 +186,22 @@ class Search extends Component {
                   onClick={this.onClickAndFetch}
                 >
                   パッシブ（チル）
+                </button>
+              </div>
+              <div className="search-row">
+                <button
+                  className="clikable-search"
+                  id=""
+                  onClick={this.onClickAndFetch}
+                >
+                  どちらでもない
+                </button>
+                <button
+                  className="clikable-search"
+                  id=""
+                  onClick={this.onClickAndFetch}
+                >
+                  おまかせ
                 </button>
               </div>
             </div>
@@ -221,7 +236,7 @@ class Search extends Component {
           </div> */}
           <div className="row">
             {/* <div className="col-3"> */}
-            {/* {this.createSongCard(this.state.songData)} */}
+            {this.createSongCard(this.state.songData)}
             {}
             {/* <SongCard songInfo={this.state.data} /> */}
             {/* <SongCard songInfo={this.state.data} /> */}

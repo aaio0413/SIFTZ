@@ -11,6 +11,7 @@ import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
+import SearchResult from "./components/SearchResult";
 // import { RedirectUser } from "./components/Login/RedirectUser";
 
 class App extends Component {
@@ -39,6 +40,11 @@ class App extends Component {
             path="/search"
             // component={this.state.isloggedin ? Search : Login}
             component={Search}
+          />
+          <Route
+            path="/search-result"
+            // component={this.state.isloggedin ? Search : Login}
+            component={SearchResult}
           />
           <Route exact path="/signup" component={SignUp} />
 
