@@ -54,18 +54,29 @@ router.get("/search/:time", (req, res) => {
 
 router.get("/search/songParam/:searchQuery", (req, res) => {
   let searcher = req.params.searchQuery;
-  let searchQueryForDatabase = [];
+  let searchQueryForDatabase = {};
 
   searcher = searcher.split("+");
   console.log("this is searcher", searcher);
 
-  for (let i = 0; i < searcher.length; i++) {
-    searchQueryForDatabase.push(`${searcher[i]}:[1]`);
-  }
-  console.log(searchQueryForDatabase.toString());
-  // finalQuery = searchQueryForDatabase.toString();
-  Songs.find({ inside: [1], alone: [1], activeFeeling: [1] }).then(
-    songsRequested => {
+  searcher.forEach(key => {
+    console.log("key", key);
+    searchQueryForDatabase[key] = 1;
+  });
+
+  try {
+    console.log("this is searchQueryForDatabse", searchQueryForDatabase);
+    let testFinalQuery = {};
+    for (let i = 0; i < searchQueryForDatabase.length; i++) {
+      testFinalQuery[searchQueryForDatabase[i]] = searchQueryForDatabase[i];
+    }
+  } catch (err) {
+    console.log("there's error", err);
+  } finally {
+    let finalQuery = { inside: 1, alone: 1, activeFeeling: 1 };
+    console.log("this is real final", finalQuery);
+
+    Songs.find(searchQueryForDatabase).then(songsRequested => {
       if (songsRequested) {
         console.log("songs found!!", songsRequested);
         res.send(songsRequested);
@@ -75,8 +86,8 @@ router.get("/search/songParam/:searchQuery", (req, res) => {
         res.send("there's no song for night");
         res.end("ending session ;)");
       }
-    }
-  );
+    });
+  }
 });
 
 module.exports = router;

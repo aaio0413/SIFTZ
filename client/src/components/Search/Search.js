@@ -10,28 +10,37 @@ class Search extends Component {
 
     this.state = {
       userInput: [],
-      pageNum: 0,
-      songData: []
+      pageName: "where",
+      songData: "nodata"
     };
+    this.onClickHome = this.onClickHome.bind(this);
   }
 
   onClick = e => {
     let paramArray = this.state.userInput.slice();
     let songParam = e.target.id;
-    // console.log(e.target.id);
     paramArray.push(songParam);
 
-    let currentPageNum = this.state.pageNum;
-    currentPageNum++;
+    let pageValue = e.target.value;
 
-    this.setState({ userInput: paramArray, pageNum: currentPageNum }, () => {
+    this.setState({ userInput: paramArray, pageName: pageValue }, () => {
       console.log("this is state", this.state);
     });
   };
 
+  onClickHome = e => {
+    console.log("home button is clicked", e);
+    this.setState(
+      { userInput: [], pageName: "where", songDate: "nodata" },
+      () => {
+        return;
+      }
+    );
+  };
+
   createSongCard = data => {
     let songCards = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < data.length; i++) {
       songCards.push(<SongCard songInfo={data[i]} key={i} />);
       console.log("this is what you're passing to the component", data[i]);
     }
@@ -52,11 +61,13 @@ class Search extends Component {
       })
       .then(songData => {
         console.log(songData);
-        this.setState({ songData: songData });
-        console.log(
-          "lets see what is the state data index 0",
-          this.state.songData[0]
-        );
+        this.setState({ songData: songData }, () => {
+          console.log(
+            "lets see what is the state data index 0",
+            this.state.songData[0]
+          );
+        });
+
         this._fetchSongReqeust = null;
       });
   };
@@ -67,20 +78,19 @@ class Search extends Component {
     let songParam = e.target.id;
     paramArray.push(songParam);
 
-    let currentPageNum = this.state.pageNum;
-    currentPageNum++;
+    let pageValue = e.target.value;
 
-    this.setState({ userInput: paramArray, pageNum: currentPageNum }, () => {
+    this.setState({ userInput: paramArray, pageName: pageValue }, () => {
       console.log("this is state before fetching", this.state);
       this.fetchSongData();
     });
   };
 
   render() {
-    if (this.state.pageNum === 0) {
+    if (this.state.pageName === "where") {
       return (
         <Fragment>
-          <HeaderHome />
+          <HeaderHome value="where" />
           <div className="whole-seach-component-wrap">
             <h2 className="searchTitile">今ドコにいる？</h2>
             <div className="col-8 search-click-wrapper">
@@ -88,6 +98,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id="inside"
+                  value="withWho"
                   onClick={this.onClick}
                 >
                   インドア
@@ -95,6 +106,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id="outside"
+                  value="withWho"
                   onClick={this.onClick}
                 >
                   アウトドア
@@ -104,6 +116,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id="driving"
+                  value="withWho"
                   onClick={this.onClick}
                 >
                   ドライブ
@@ -111,6 +124,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id=""
+                  value="withWho"
                   onClick={this.onClick}
                 >
                   おまかせ
@@ -121,7 +135,7 @@ class Search extends Component {
         </Fragment>
       );
     }
-    if (this.state.pageNum === 1) {
+    if (this.state.pageName === "withWho") {
       return (
         <Fragment>
           <HeaderHome />
@@ -132,6 +146,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id="alone"
+                  value="activity"
                   onClick={this.onClick}
                 >
                   ひとりで
@@ -139,6 +154,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id="withFriends"
+                  value="activity"
                   onClick={this.onClick}
                 >
                   友達と
@@ -148,6 +164,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id="withSO"
+                  value="activity"
                   onClick={this.onClick}
                 >
                   大切な誰かと
@@ -155,6 +172,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id=""
+                  value="activity"
                   onClick={this.onClick}
                 >
                   おまかせ
@@ -165,7 +183,7 @@ class Search extends Component {
         </Fragment>
       );
     }
-    if (this.state.pageNum === 2) {
+    if (this.state.pageName === "activity") {
       return (
         <Fragment>
           <HeaderHome />
@@ -176,6 +194,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id="activeFeeling"
+                  value="result"
                   onClick={this.onClickAndFetch}
                 >
                   アクティブ
@@ -183,6 +202,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id="chillFeeling"
+                  value="result"
                   onClick={this.onClickAndFetch}
                 >
                   パッシブ（チル）
@@ -192,6 +212,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id=""
+                  value="result"
                   onClick={this.onClickAndFetch}
                 >
                   どちらでもない
@@ -199,6 +220,7 @@ class Search extends Component {
                 <button
                   className="clikable-search"
                   id=""
+                  value="result"
                   onClick={this.onClickAndFetch}
                 >
                   おまかせ
@@ -209,41 +231,25 @@ class Search extends Component {
         </Fragment>
       );
     }
-    if (this.state.pageNum === 3) {
-      return (
-        <Fragment>
-          <HeaderHome />
-          {/* <div className="whole-seach-component-wrap">
-            <h2 className="searchTitile">特別なキーワードを付け足す</h2>
-            <div className="col-8 search-click-wrapper">
-              <div className="search-row">
-                <button
-                  className="clikable-search"
-                  id="alone"
-                  onClick={this.onClick}
-                >
-                  アクティブ
-                </button>
-                <button
-                  className="clikable-search"
-                  id="withFriends"
-                  onClick={this.onClick}
-                >
-                  パッシブ（チル）
-                </button>
-              </div>
+    if (this.state.pageName === "result") {
+      if (this.state.songData === "nodata") {
+        return <div />;
+      } else {
+        return (
+          <Fragment>
+            <HeaderHome onClick={this.onClickHome} />
+
+            <div className="row">
+              {/* <div className="col-3"> */}
+              {this.createSongCard(this.state.songData)}
+              {}
+              {/* <SongCard songInfo={this.state.data} /> */}
+              {/* <SongCard songInfo={this.state.data} /> */}
+              {/* </div> */}
             </div>
-          </div> */}
-          <div className="row">
-            {/* <div className="col-3"> */}
-            {this.createSongCard(this.state.songData)}
-            {}
-            {/* <SongCard songInfo={this.state.data} /> */}
-            {/* <SongCard songInfo={this.state.data} /> */}
-            {/* </div> */}
-          </div>
-        </Fragment>
-      );
+          </Fragment>
+        );
+      }
     }
   }
 }
