@@ -78,11 +78,13 @@ realUlr = "https://img.youtube.com/vi/"+videoUrl+"/0.jpg"
   </script>
 </Helmet> */}
 
-      <img
-        className="card-img-top"
-        src={urlToImage(props.songInfo.url)}
-        alt="song img"
-      />
+      <a href={props.songInfo.url}>
+        <img
+          className="card-img-top"
+          src={urlToImage(props.songInfo.url)}
+          alt="song img"
+        />
+      </a>
 
       <div className="card-body card-body2">
         <div className="avator">
