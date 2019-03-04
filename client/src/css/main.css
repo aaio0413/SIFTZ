@@ -221,6 +221,8 @@ li p {
   margin-bottom: unset;
 }
 
+/*                      ############       SongCard         #########             */
+
 .card-body2 {
   display: flex;
   justify-content: space-between;
@@ -243,7 +245,7 @@ li p {
 
 .card2 {
   width: 15rem;
-  margin: auto;
+  margin: 3% auto;
 }
 
 .main-container h2 {

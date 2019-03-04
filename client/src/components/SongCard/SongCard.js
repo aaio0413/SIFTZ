@@ -6,13 +6,18 @@ var urlToImage = function(videoUrl) {
   if (videoUrl) {
     console.log("vidoe url", videoUrl);
     let realUrl = "";
-    const criticalIndex = videoUrl.indexOf("=");
-    if (criticalIndex > 0)
-      videoUrl = videoUrl.substring(criticalIndex + 1, videoUrl.length);
-    realUrl = "https://img.youtube.com/vi/" + videoUrl + "/0.jpg";
+    let videoId = "";
+
+    if (videoUrl.indexOf("youtu.be/") > 0) {
+      videoId = videoUrl.split("youtu.be/")[1]; // eg https://youtu.be/JO60xCm4ccI and https://youtu.be/__OSyznVDOY
+    } else if (videoUrl.indexOf("?v=") > 0) {
+      const videoParemeterString = videoUrl.split("?v=")[1];
+      videoId = videoParemeterString.split("&")[0];
+    } else {
+      console.log("not rendered yet");
+    }
+    realUrl = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
     return realUrl;
-  } else {
-    console.log("not rendered yet");
   }
 };
 
@@ -73,11 +78,13 @@ realUlr = "https://img.youtube.com/vi/"+videoUrl+"/0.jpg"
   </script>
 </Helmet> */}
 
-      <img
-        className="card-img-top"
-        src={urlToImage(props.songInfo.url)}
-        alt="song img"
-      />
+      <a href={props.songInfo.url}>
+        <img
+          className="card-img-top"
+          src={urlToImage(props.songInfo.url)}
+          alt="song img"
+        />
+      </a>
 
       <div className="card-body card-body2">
         <div className="avator">

@@ -18,7 +18,7 @@ class HeaderHome extends Component {
                 <p>My Siftz</p>
               </li>
             </Link>
-            <Link to="/search">
+            <Link to="/search" onClick={this.props.onClick}>
               <li>
                 <p>How you feelin'?</p>
               </li>
