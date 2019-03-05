@@ -50,8 +50,8 @@ app.use("/api/mySiftz", mySiftzRoutes);
 app.use(express.static(path.resolve(__dirname, "..", "/client", "/public")));
 
 // create home route
-app.get("/" || "*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/index.html"));
 });
 
 //connect mongoDB
