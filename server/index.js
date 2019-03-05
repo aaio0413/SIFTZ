@@ -90,7 +90,7 @@ else
   );
 
 app.listen(process.env.PORT || 3090, () => {
-  const port = server.address().port;
+  // const port = app.address().port;
   console.log("app now listening for requests on port", port);
 });
 
