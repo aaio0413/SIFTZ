@@ -22,7 +22,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/mySiftz", mySiftzRoutes);
 app.use(express.static(path.resolve(__dirname, "../client")));
 // create home route
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
 
