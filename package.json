@@ -25,7 +25,7 @@
     "master": "git checkout master && yarn run delete",
     "delete": "git branch -D deploy",
     "start": "concurrently --kill-others-on-fail \"yarn run server-prod\" \"yarn run client\"",
-    "client": "node internals/scripts/build.js",
+    "client": "node internals/scripts/client.js",
     "server": "nodemon --watch server server/index.js",
     "server-prod": "node server/index.js"
   },
