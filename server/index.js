@@ -104,7 +104,8 @@ else
   );
 
 app.listen(process.env.PORT || 3090, () => {
-  console.log("app now listening for requests on port 3090");
+  const port = server.address().port;
+  console.log("app now listening for requests on port", port);
 });
 
 process.on("SIGINT", function() {
