@@ -14,19 +14,7 @@
   },
   "homepage": "https://github.com/aaio0413/SIFTZ#readme",
   "scripts": {
-    "test": "test",
-    "setup": "yarn install && cd client && yarn install",
-    "build": "node internals/scripts/build.js",
-    "deploy": "yarn build && yarn checkout",
-    "checkout": "git checkout -b deploy && yarn run add",
-    "add": "git add -f client/build && yarn run commit",
-    "commit": "git commit -m \"deploy\" && yarn run push",
-    "push": "git push -f heroku deploy:master && yarn run master",
-    "master": "git checkout master && yarn run delete",
-    "delete": "git branch -D deploy",
-    "start": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
-    "client": "node internals/scripts/client.js",
-    "server": "nodemon --watch server server/index.js",
+    "start": "node server/index.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "engines": {
