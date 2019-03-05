@@ -23,10 +23,10 @@ app.use("/api/mySiftz", mySiftzRoutes);
 
 console.log("This is __dirname!!!!!!!!", __dirname);
 
-app.use(express.static(path.resolve(__dirname, "./client")));
+app.use(express.static(path.resolve(__dirname, "../client")));
 // create home route
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
 
 //cookie setUp
