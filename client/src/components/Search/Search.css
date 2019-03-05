@@ -35,3 +35,19 @@
 .clikable-search:hover {
   background-color: rgba(172, 172, 172, 0.86);
 }
+
+.searchResultHeader {
+  background-position: center;
+  height: 70vh;
+  background-image: url("../../images/abstract-art-background-1037999\ copy.jpg");
+  background-size: cover;
+}
+
+.result-first-message {
+  font-size: 2.5rem;
+  padding-left: 3%;
+  margin-bottom: unset;
+  margin: 3% 0;
+  color: rgb(135, 212, 58);
+  font-weight: 300;
+}

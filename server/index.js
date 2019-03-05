@@ -65,7 +65,7 @@ app.get("*", (req, res) => {
 
 // console.log("this is process.env here", process.env.MONGO_DB_URL);
 //connect mongoDB
-mongodb.connect(process.env.MONGO_DB_URL, () => {
+mongodb.connect(process.env.MONGO_DB_URL, { useNewUrlParser: true }, () => {
   console.log("connected mongoDB");
 });
 

@@ -1,11 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-// auth login
-// router.get("/login", (req, res) => {
-//   res.render("login", { user: req.user });
-// });
-
 router.get("/login", (req, res) => {
   res.render("newLogin", { user: req.user });
 });
@@ -29,50 +24,60 @@ router.get(
 );
 router.get("/instagram", passport.authenticate("instagram"));
 router.get("/facebook", passport.authenticate("facebook"));
+
 //auth callback from google
 router.get(
   "/google/redirect",
   passport.authenticate("google", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("http://localhost:3000/login"); // for local
+      // res.redirect("http://localhost:3000/login"); // for local
+      res.redirect("https://shiftz-jp.herokuapp.com/login"); //for product
     } else {
       // Handle other errors here
     }
   },
   (req, res) => {
-    res.redirect("http://localhost:3000/mySiftz/");
+    // res.redirect("http://localhost:3000/mySiftz/"); //for local
+    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz"); //for product
     //res.send(req.user);
   }
 );
+
+//auth callback from instagram
 router.get(
   "/instagram/redirect",
   passport.authenticate("instagram", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("http://localhost:3000/login"); // for local
+      // res.redirect("http://localhost:3000/login"); // for local
+      res.redirect("https://shiftz-jp.herokuapp.com/login"); //for product
     } else {
       // Handle other errors here
     }
   },
   (req, res) => {
-    res.redirect("http://localhost:3000/mySiftz/");
+    // res.redirect("http://localhost:3000/mySiftz/");
+    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz"); //for product
     //res.send(req.user);
   }
 );
 
+//call back from facebook
 router.get(
   "/facebook/redirect",
   passport.authenticate("facebook", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("http://localhost:3000/login"); // for local
+      // res.redirect("http://localhost:3000/login"); // for local
+      res.redirect("https://shiftz-jp.herokuapp.com/login"); //for product
     } else {
       // Handle other errors here
     }
   },
   (req, res) => {
-    res.redirect("http://localhost:3000/mySiftz/");
+    // res.redirect("http://localhost:3000/mySiftz/");
+    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz"); //for product
     //res.send(req.user);
   }
 );
