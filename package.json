@@ -28,7 +28,8 @@
     "client": "node internals/scripts/client.js",
     "server": "nodemon --watch server server/index.js",
     "server-prod": "node server/index.js",
-    "heroku-prebuild": "yarn install --production=false"
+    "heroku-prebuild": "yarn install --production=false",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "dependencies": {
     "axios": "^0.18.0",
