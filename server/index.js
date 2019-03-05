@@ -14,17 +14,19 @@ const cors = require("cors");
 
 const app = express();
 
-// app.use(proxy("http://localhost:3000"));
-// app.use(proxy("/api", { target: "http://localhost:3090/" }));
-
 app.use(bodyParser.json({ type: "*/*" })); // Type indicates ALL header types OK
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.static(__dirname + "/public"));
-app.use(express.static(path.resolve(__dirname, "..", "..", "public")));
+// set up routes
+app.use("/api/auth", authRoutes);
+app.use("/api/mySiftz", mySiftzRoutes);
+app.use(express.static(path.resolve(__dirname, "../client")));
+// create home route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+});
 
 //cookie setUp
-
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
@@ -32,27 +34,10 @@ app.use(
   })
 );
 
-// if (env.isDevelopment()) {
-//   const proxy = require("express-http-proxy");
-//   app.use("/*", proxy("http://localhost:3000"));
-// } else {
-//   // probably serve up build version in production
-// }
-
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
-
-// set up routes
-app.use("/api/auth", authRoutes);
-app.use("/api/mySiftz", mySiftzRoutes);
-app.use(express.static(path.resolve(__dirname, "../client")));
-
-// create home route
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
