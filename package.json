@@ -27,8 +27,7 @@
     "start": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
     "client": "node internals/scripts/client.js",
     "server": "nodemon --watch server server/index.js",
-    "heroku-prebuild": "yarn install --production=false",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "axios": "^0.18.0",
