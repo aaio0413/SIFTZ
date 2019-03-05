@@ -44,37 +44,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
 
-//cors
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
-
 // set up routes
 app.use("/api/auth", authRoutes);
 app.use("/api/mySiftz", mySiftzRoutes);
+app.use(express.static(path.resolve(__dirname, "..", "/client", "/public")));
 
 // create home route
-app.get("*", (req, res) => {
+app.get("/" || "*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
 
-// console.log("this is process.env here", process.env.MONGO_DB_URL);
 //connect mongoDB
-mongodb.connect(process.env.MONGO_DB_URL, { useNewUrlParser: true }, () => {
-  console.log("connected mongoDB");
-});
-
-// let db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-
-// db.once('open', function callback() {
-
-// }
+mongodb.connect(
+  process.env.MONGO_DB_URL,
+  { useNewUrlParser: true, useFindAndModify: false },
+  () => {
+    console.log("connected mongoDB");
+  }
+);
 
 // app.get("*", (req, res) => {
 //   res.render("static" + req.url, function(err, html) {
@@ -92,7 +79,6 @@ mongodb.connect(process.env.MONGO_DB_URL, { useNewUrlParser: true }, () => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
 if (process.env.NODE_ENV === "test") app.use(morgan(() => null));
 else
   app.use(
