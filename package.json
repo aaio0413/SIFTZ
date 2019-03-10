@@ -15,6 +15,7 @@
   "homepage": "https://github.com/aaio0413/SIFTZ#readme",
   "scripts": {
     "test": "test",
+    "build": "react-scripts build",
     "setup": "npm install && cd client && npm install",
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
