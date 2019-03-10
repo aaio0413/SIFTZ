@@ -16,11 +16,15 @@ class LogIn extends React.Component {
         <HeaderLogin />
         <div className="login-form">
           <section className="signUp-with">
-            <button className="facebook-button">SIGNUP WITH FACEBOOK</button>
-            <button className="instagram-button">SIGNUP WITH INSTAGRAM</button>
-            <button className="gmail-button">
-              <Link to="/auth/google">SIGNUP WITH GMAIL</Link>
-            </button>
+            <a className="facebook-button" href="/api/auth/facebook">
+              SIGN UP WITH Facebook
+            </a>
+            <a className="instagram-button" href="/api/auth/instagram">
+              SIGN UP WITH Instagram
+            </a>
+            <a className="gmail-button" href="/api/auth/google">
+              SIGN UP WITH GMAIL
+            </a>
           </section>
           <strong className="line-thru">or</strong>
 

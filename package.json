@@ -46,8 +46,5 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-instagram": "^1.0.0",
     "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "concurrently": "^3.5.0"
   }
 }

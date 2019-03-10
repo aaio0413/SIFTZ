@@ -90,8 +90,8 @@ passport.use(
       //option for strategy
 
       callbackURL: "http://localhost:3090/api/auth/facebook/redirect", //this is for local
-      clientID: process.env.APP_ID,
-      clientSecret: process.env.APP_SECRET
+      clientID: process.env.FB_APP_ID,
+      clientSecret: process.env.FB_APP_SECRET
       // callbackURL: "https://shiftz-jp.herokuapp.com/auth/google/redirect"
     },
     (accessToken, refreshToken, profile, done) => {

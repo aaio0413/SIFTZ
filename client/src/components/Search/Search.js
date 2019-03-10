@@ -238,7 +238,10 @@ class Search extends Component {
         return (
           <Fragment>
             <HeaderHome onClick={this.onClickHome} />
-
+            <div className="searchResultHeader" />
+            <div className="result-first-message">
+              <h2>今のアナタの気分にピッタリの曲。</h2>
+            </div>
             <div className="row">
               {/* <div className="col-3"> */}
               {this.createSongCard(this.state.songData)}
