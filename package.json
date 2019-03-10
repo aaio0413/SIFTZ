@@ -15,14 +15,12 @@
   "homepage": "https://github.com/aaio0413/SIFTZ#readme",
   "scripts": {
     "test": "test",
-    "build": "react-scripts build",
-    "setup": "npm install && cd client && npm install",
     "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server/index.js",
-    "server": "nodemon --watch server server/index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix cilent"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "axios": "^0.18.0",
