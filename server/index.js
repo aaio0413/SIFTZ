@@ -21,7 +21,7 @@ app.use(bodyParser.json({ type: "*/*" })); // Type indicates ALL header types OK
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.static(__dirname + "/public"));
-app.use(express.static(path.resolve(__dirname, "..", "..", "public")));
+// app.use(express.static(path.resolve(__dirname, "..", "..", "public")));
 
 //cookie setUp
 
@@ -58,11 +58,6 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/mySiftz", mySiftzRoutes);
 
-// create home route
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
-});
-
 // console.log("this is process.env here", process.env.MONGO_DB_URL);
 //connect mongoDB
 mongodb.connect(process.env.MONGO_DB_URL, () => {
@@ -91,6 +86,9 @@ mongodb.connect(process.env.MONGO_DB_URL, () => {
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
 
 if (process.env.NODE_ENV === "test") app.use(morgan(() => null));
@@ -104,7 +102,8 @@ else
   );
 
 app.listen(process.env.PORT || 3090, () => {
-  console.log("app now listening for requests on port 3090");
+  const port = process.env.PORT || 3090;
+  console.log("app now listening for requests on port", port);
 });
 
 process.on("SIGINT", function() {

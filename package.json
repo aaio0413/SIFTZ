@@ -15,19 +15,19 @@
   "homepage": "https://github.com/aaio0413/SIFTZ#readme",
   "scripts": {
     "test": "test",
-    "setup": "yarn install && cd client && yarn install",
+    "setup": "npm install && cd client && npm install",
     "build": "node internals/scripts/build.js",
-    "deploy": "yarn build && yarn checkout",
+    "deploy": "npm run build && npm checkout",
     "checkout": "git checkout -b deploy && yarn run add",
-    "add": "git add -f client/build && yarn run commit",
-    "commit": "git commit -m \"deploy\" && yarn run push",
-    "push": "git push -f heroku deploy:master && yarn run master",
-    "master": "git checkout master && yarn run delete",
+    "add": "git add -f client/build && npm run commit",
+    "commit": "git commit -m \"deploy\" && npm run push",
+    "push": "git push -f heroku deploy:master && npm run master",
+    "master": "git checkout master && npm run delete",
     "delete": "git branch -D deploy",
-    "start": "cross-env NODE_ENV=production node server/index.js",
+    "start": "node server/index.js",
     "client": "node internals/scripts/client.js",
     "server": "nodemon --watch server server/index.js",
-    "heroku-postbuild": "cd client && yarn install --only=dev && yarn install && yarn run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix cilent"
   },
   "dependencies": {
     "axios": "^0.18.0",
