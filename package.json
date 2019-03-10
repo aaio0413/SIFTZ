@@ -24,10 +24,10 @@
     "push": "git push -f heroku deploy:master && yarn run master",
     "master": "git checkout master && yarn run delete",
     "delete": "git branch -D deploy",
-    "start": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+    "start": "cross-env NODE_ENV=production node server/index.js",
     "client": "node internals/scripts/client.js",
     "server": "nodemon --watch server server/index.js",
-    "server-prod": "node server/index.js"
+    "heroku-postbuild": "cd client && yarn install --only=dev && yarn install && yarn run build"
   },
   "dependencies": {
     "axios": "^0.18.0",
