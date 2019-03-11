@@ -78,7 +78,7 @@ realUlr = "https://img.youtube.com/vi/"+videoUrl+"/0.jpg"
   </script>
 </Helmet> */}
 
-      <a href={props.songInfo.url}>
+      <a href={props.songInfo.url} target="_blank" rel="noopener noreferrer">
         <img
           className="card-img-top"
           src={urlToImage(props.songInfo.url)}
@@ -87,18 +87,18 @@ realUlr = "https://img.youtube.com/vi/"+videoUrl+"/0.jpg"
       </a>
 
       <div className="card-body card-body2">
-        <div className="avator">
+        {/* <div className="avator">
           <img
             src="https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/andrew.png"
             alt="avator man"
           />
-        </div>
+        </div> */}
         <p className="song-title">{props.songInfo.songTitle}</p>
 
-        <div className="star-and-share">
+        {/* <div className="star-and-share">
           <i className="far fa-heart" />
           <i className="fas fa-share-square" />
-        </div>
+        </div> */}
       </div>
     </div>
   </div>

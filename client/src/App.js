@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,7 +31,7 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route path="/" component={Home} />
           <Route
             path="/mySiftz"
             // component={this.state.isloggedin ? MySiftz : Login}
@@ -46,14 +47,14 @@ class App extends Component {
             // component={this.state.isloggedin ? Search : Login}
             component={SearchResult}
           />
-          <Route exact path="/signup" component={SignUp} />
+          <Route path="/signup" component={SignUp} />
 
           <Route
             path="/login"
             // component={this.state.isloggedin ? Login : Login}
             component={LogIn}
           />
-          <Route exact path="*" component={Home} />
+          <Route path="*" component={Home} />
         </Switch>
       </Router>
     );
