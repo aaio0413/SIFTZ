@@ -30,44 +30,44 @@ router.get(
 router.get("/instagram", passport.authenticate("instagram"));
 router.get("/facebook", passport.authenticate("facebook"));
 //auth callback from google
-// router.get(
-//   "/google/redirect",
-//   passport.authenticate("google", {
-//     failureRedirect: "/login",
-//     failureFlash: true,
-//     successRedirect: "https://shiftz-jp.herokuapp.com/mySiftz"
-//   }),
-//   (err, req, res, next) => {
-//     if (err.name === "TokenError") {
-//       res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
-//     } else {
-//       // Handle other errors here
-//     }
-//   },
-//   (req, res) => {
-//     res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
-//     // res.redirect("http://localhost:3000/mySiftz"); //local
-//     //res.send(req.user);
-//   }
-// );
+router.get(
+  "/google/redirect",
+  passport.authenticate("google", {
+    failureRedirect: "/login",
+    failureFlash: true,
+    successRedirect: "https://shiftz-jp.herokuapp.com/mySiftz"
+  }),
+  (err, req, res, next) => {
+    if (err.name === "TokenError") {
+      res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
+    } else {
+      // Handle other errors here
+    }
+  },
+  (req, res) => {
+    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
+    // res.redirect("http://localhost:3000/mySiftz"); //local
+    //res.send(req.user);
+  }
+);
 
-router.get("/google/redirect", function(req, res, next) {
-  passport.authenticate("google", function(err, user, info) {
-    if (err) {
-      console.log(err);
-      return next(err);
-    }
-    if (!user) {
-      return res.redirect("/login");
-    }
-    req.logIn(user, function(err) {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect("http://shiftz-jp.herokuapp.com/mySiftz");
-    });
-  })(req, res, next);
-});
+// router.get("/google/redirect", function(req, res, next) {
+//   passport.authenticate("google", function(err, user, info) {
+//     if (err) {
+//       console.log(err);
+//       return next(err);
+//     }
+//     if (!user) {
+//       return res.redirect("/login");
+//     }
+//     req.logIn(user, function(err) {
+//       if (err) {
+//         return next(err);
+//       }
+//       return res.redirect("http://shiftz-jp.herokuapp.com/mySiftz");
+//     });
+//   })(req, res, next);
+// });
 
 router.get(
   "/instagram/redirect",
