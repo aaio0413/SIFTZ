@@ -35,7 +35,7 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("https://shiftz-jp.herokuapp.com/login/"); // for local
+      res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
     } else {
       // Handle other errors here
     }
@@ -50,13 +50,13 @@ router.get(
   passport.authenticate("instagram", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("https://shiftz-jp.herokuapp.com/login/"); // for local
+      res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
     } else {
       // Handle other errors here
     }
   },
   (req, res) => {
-    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz/");
+    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
     //res.send(req.user);
   }
 );
@@ -66,13 +66,13 @@ router.get(
   passport.authenticate("facebook", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("https://shiftz-jp.herokuapp.com/login/"); // for local
+      res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
     } else {
       // Handle other errors here
     }
   },
   (req, res) => {
-    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz/");
+    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
     //res.send(req.user);
   }
 );
