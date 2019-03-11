@@ -35,7 +35,7 @@ router.get(
   passport.authenticate("google", {
     failureRedirect: "/login",
     failureFlash: true,
-    successRedirect: "/api/mySiftz"
+    successRedirect: "/mySiftz"
   }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {

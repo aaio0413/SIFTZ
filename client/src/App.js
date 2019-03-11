@@ -35,7 +35,6 @@ class App extends Component {
           <Route
             path="/mySiftz"
             // component={this.state.isloggedin ? MySiftz : Login}
-            exact
             component={MySiftz}
           />
           <Route
