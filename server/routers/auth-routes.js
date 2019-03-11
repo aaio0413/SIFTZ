@@ -64,7 +64,7 @@ router.get("/google/redirect", function(req, res, next) {
       if (err) {
         return next(err);
       }
-      return res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
+      return res.redirect("http://shiftz-jp.herokuapp.com/mySiftz");
     });
   })(req, res, next);
 });
