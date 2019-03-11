@@ -123,7 +123,7 @@ class Search extends Component {
                 </button>
                 <button
                   className="clikable-search"
-                  id=""
+                  id="outside"
                   value="withWho"
                   onClick={this.onClick}
                 >
@@ -171,7 +171,7 @@ class Search extends Component {
                 </button>
                 <button
                   className="clikable-search"
-                  id=""
+                  id="withSO"
                   value="activity"
                   onClick={this.onClick}
                 >
@@ -209,17 +209,17 @@ class Search extends Component {
                 </button>
               </div>
               <div className="search-row">
-                <button
+                {/* <button
                   className="clikable-search"
                   id=""
                   value="result"
                   onClick={this.onClickAndFetch}
                 >
                   どちらでもない
-                </button>
+                </button> */}
                 <button
                   className="clikable-search"
-                  id=""
+                  id="chillFeeling"
                   value="result"
                   onClick={this.onClickAndFetch}
                 >
