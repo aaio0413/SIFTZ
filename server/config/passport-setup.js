@@ -22,7 +22,7 @@ passport.use(
       // callbackURL: "http://localhost:3090/api/auth/google/redirect", //this is for local
       clientID: process.env.GOOGLE_CLIENT,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://shiftz-jp.herokuapp.com/auth/google/redirect"
+      callbackURL: "https://shiftz-jp.herokuapp.com/api/auth/google/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
       //passport callback function
@@ -57,7 +57,7 @@ passport.use(
       // callbackURL: "http://localhost:3090/api/auth/instagram/redirect", //this is for local
       clientID: process.env.INSTAGRAM_CLIENT,
       clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
-      callbackURL: "https://shiftz-jp.herokuapp.com/auth/instagram/redirect"
+      callbackURL: "https://shiftz-jp.herokuapp.com/api/auth/instagram/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
       //passport callback function
@@ -92,7 +92,7 @@ passport.use(
       // callbackURL: "http://localhost:3090/api/auth/facebook/redirect", //this is for local
       clientID: process.env.FB_APP_ID,
       clientSecret: process.env.FB_APP_SECRET,
-      callbackURL: "https://shiftz-jp.herokuapp.com/auth/facebook/redirect"
+      callbackURL: "https://shiftz-jp.herokuapp.com/api/auth/facebook/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
       //passport callback function
