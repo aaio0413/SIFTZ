@@ -13,11 +13,11 @@ const authCheck = (req, res, next) => {
   }
 };
 
-router.get("/", authCheck, (err, req, res, next) => {
-  console.log(req.user);
-  console.log(err);
-  res.json({ userName: req.user.userName });
-});
+// router.get("/", authCheck, (err, req, res, next) => {
+//   console.log(req.user);
+//   console.log(err);
+//   res.json({ userName: req.user.userName });
+// });
 
 router.get("/search/:time", (req, res) => {
   const timeChanger = req.params.time;
