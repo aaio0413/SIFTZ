@@ -35,7 +35,7 @@ router.get(
   passport.authenticate("google", {
     failureRedirect: "/login",
     failureFlash: true,
-    successRedirect: "https://shiftz-jp.herokuapp.com/mySiftz"
+    successRedirect: "http://shiftz-jp.herokuapp.com/mySiftz"
   }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
@@ -45,7 +45,7 @@ router.get(
     }
   },
   (req, res) => {
-    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
+    res.redirect("http://shiftz-jp.herokuapp.com/mySiftz");
     // res.redirect("http://localhost:3000/mySiftz"); //local
     //res.send(req.user);
   }
