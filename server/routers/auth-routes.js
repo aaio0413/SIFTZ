@@ -32,7 +32,11 @@ router.get("/facebook", passport.authenticate("facebook"));
 //auth callback from google
 router.get(
   "/google/redirect",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", {
+    failureRedirect: "/login",
+    failureFlash: true,
+    successRedirect: "https://shiftz-jp.herokuapp.com/mySiftz"
+  }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
       res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
