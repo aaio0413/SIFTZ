@@ -41,7 +41,7 @@ router.get(
     }
   },
   (req, res) => {
-    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz/");
+    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
     //res.send(req.user);
   }
 );

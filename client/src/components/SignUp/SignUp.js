@@ -45,7 +45,7 @@ class LogIn extends React.Component {
               <div className="form-group col-md-6">
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="inputPassword4"
                   placeholder="Confirm Email"
                 />
@@ -54,7 +54,7 @@ class LogIn extends React.Component {
             <div className="form-group">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="inputAddress"
                 placeholder="Password"
               />
@@ -66,7 +66,7 @@ class LogIn extends React.Component {
                   class="form-check-input"
                   id="exampleCheck1"
                 />
-                <label className="form-check-label" for="exampleCheck1">
+                <label className="form-check-label" htmlFor="exampleCheck1">
                   Remember me
                 </label>
               </div>
