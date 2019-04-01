@@ -9,7 +9,9 @@ const mongodb = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
+
 const cors = require("cors");
+
 const app = express();
 
 // app.use(proxy("http://localhost:3000"));
@@ -83,7 +85,7 @@ mongodb.connect(process.env.MONGO_DB_URL, () => {
 // });
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client"));
+  app.use(express.static("client/build"));
   app.get("*", (req, res) => {
     res.sendFile(
       path.resolve(__dirname, "..", "client", "public", "index.html")
@@ -110,3 +112,5 @@ process.on("SIGINT", function() {
   console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
   process.exit();
 });
+
+//fingers crossed commmoooon
