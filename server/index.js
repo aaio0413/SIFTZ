@@ -9,9 +9,7 @@ const mongodb = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-
 const cors = require("cors");
-
 const app = express();
 
 // app.use(proxy("http://localhost:3000"));
@@ -112,5 +110,3 @@ process.on("SIGINT", function() {
   console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
   process.exit();
 });
-
-//fingers crossed commmoooon
