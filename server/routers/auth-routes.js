@@ -49,7 +49,7 @@ router.get(
     const userInfo = {
       username: req.user.username
     };
-    res.send(userInfo);
+    // res.send(userInfo);
     res.redirect("https://shiftz-jp.herokuapp.com/mySiftz/");
     // res.redirect("http://localhost:3000/mySiftz"); //local
     //res.send(req.user);
