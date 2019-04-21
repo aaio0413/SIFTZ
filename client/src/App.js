@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Signup from "./components/Signup/Signup.js";
 import Home from "./components/Home";
 import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
-
 import Login from "./components/LogIn";
+import Signup from "./components/Signup/Signup.js";
 import SearchResult from "./components/SearchResult";
 // import { RedirectUser } from "./components/Login/RedirectUser";
 
