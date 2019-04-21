@@ -1,31 +1,16 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
+import { connect } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Home from "./components/Home";
 import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
 import SignUp from "./components/SignUp";
-import LogIn from "./components/LogIn";
+import Login from "./components/LogIn";
 import SearchResult from "./components/SearchResult";
 // import { RedirectUser } from "./components/Login/RedirectUser";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isloggedin: false };
-    //this.PrivateRoute = this.PrivateRoute.bind(this);
-  }
-
-  // componentDidMount() {
-  //   const presence = window.localStorage.getItem("token");
-  //   this.setState({ isloggedin: presence ? true : false });
-  // }
-
   render() {
     return (
       <Router>
@@ -33,26 +18,18 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route
             path="/mySiftz"
-            // component={this.state.isloggedin ? MySiftz : Login}
-            component={MySiftz}
+            component={this.props.store.status ? MySiftz : Login}
           />
           <Route
             path="/search"
-            // component={this.state.isloggedin ? Search : Login}
-            component={Search}
+            component={this.props.store.status ? Search : Login}
           />
           <Route
             path="/search-result"
-            // component={this.state.isloggedin ? Search : Login}
-            component={SearchResult}
+            component={this.props.store.status ? Search : Login}
           />
           <Route exact path="/signup" component={SignUp} />
-
-          <Route
-            path="/login"
-            // component={this.state.isloggedin ? Login : Login}
-            component={LogIn}
-          />
+          <Route path="/login" component={Login} />
           <Route exact path="*" component={Home} />
         </Switch>
       </Router>
@@ -60,4 +37,21 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    store: state
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    Login: () => {
+      dispatch({
+        type: "Login"
+      });
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

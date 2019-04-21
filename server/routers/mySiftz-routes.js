@@ -4,20 +4,6 @@ const Songs = require("../models/song-model");
 
 console.log("shits this page is loading");
 
-// const authCheck = (req, res, next) => {
-//   if (!req.user) {
-//     //if user is not logged in
-//     res.redirect("/");
-//   } else {
-//     next();
-//   }
-// };
-
-// router.get("/", authCheck, (req, res) => {
-//   console.log(req.user);
-//   res.render("mySiftz", { userName: req.user.userName });
-// });
-
 router.get("/search/:time", (req, res) => {
   const timeChanger = req.params.time;
   let timeQuery = "";
