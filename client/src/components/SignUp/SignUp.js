@@ -3,13 +3,9 @@ import { Link } from "react-router-dom";
 import HeaderLogin from "../Global/HeaderLogin";
 import { connect } from "react-redux";
 class Signup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn: false
-    };
-  }
-
+  state = {
+    login: false
+  };
   render() {
     return (
       <Fragment>
@@ -86,7 +82,6 @@ class Signup extends React.Component {
     );
   }
 }
-
 const mapStateToProps = state => {
   return {
     store: state
