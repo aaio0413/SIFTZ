@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import HeaderLogin from "../Global/HeaderLogin";
 
-class LogIn extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -78,7 +78,7 @@ class LogIn extends React.Component {
           </form>
 
           <h2 className="leadToSignUp">Already have an account?</h2>
-          <Link to="/auth/login">
+          <Link to="/login">
             <button className="btn btn-primary signUp-btn">LOG IN</button>
           </Link>
         </div>
@@ -87,4 +87,4 @@ class LogIn extends React.Component {
   }
 }
 
-export default LogIn;
+export default Signup;

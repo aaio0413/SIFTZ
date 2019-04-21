@@ -35,7 +35,7 @@ app.use(passport.session());
 // Define auth routes here
 
 // set up routes
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 app.use("/api/mySiftz", mySiftzRoutes);
 app.use("/recovery", recovery);
 

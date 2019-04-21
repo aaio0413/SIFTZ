@@ -2,7 +2,10 @@ import React, { Fragment } from "react";
 import HeaderHome from "../Global/HeaderHome";
 import SongCard from "../SongCard";
 // import axios from "axios";
-
+const SONG =
+  process.env.NODE_ENV === "production"
+    ? "https://shiftz-jp.herokuapp.com/api/mySiftz/search/night"
+    : "http://localhost:3090/api/mySiftz/search/night";
 class MySiftz extends React.Component {
   constructor(props) {
     super(props);
@@ -22,9 +25,12 @@ class MySiftz extends React.Component {
   };
 
   componentDidMount() {
-    this._fetchSongReqeust = fetch("/api/mySiftz/search/night", {
-      headers: { crossDomain: true }
-    })
+    this._fetchSongReqeust = fetch(
+      { SONG },
+      {
+        headers: { crossDomain: true }
+      }
+    )
       .then(result => {
         console.log("this is result", result);
         return result.json();
