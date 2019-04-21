@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
-import Signup from "./components/Signup";
+import Signup from "./components/Signup.js";
 import Login from "./components/LogIn";
 import SearchResult from "./components/SearchResult";
 // import { RedirectUser } from "./components/Login/RedirectUser";
