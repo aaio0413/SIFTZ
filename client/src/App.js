@@ -15,6 +15,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
           <Route
             path="/mySiftz"
             component={this.props.store.status ? MySiftz : Login}
@@ -29,7 +30,6 @@ class App extends Component {
             component={this.props.store.status ? Search : Login}
           />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/login" component={Login} />
           <Route exact path="*" component={Home} />
         </Switch>
       </Router>
