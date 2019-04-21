@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
 import Login from "./components/LogIn";
-// import Signup from "./components/Signup/Signup.js";
+import Signup from "./components/Signup";
 import SearchResult from "./components/SearchResult";
 // import { RedirectUser } from "./components/Login/RedirectUser";
 
@@ -17,7 +17,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route
             path="/mySiftz"
-            component={MySiftz}
+            component={this.props.store.status ? MySiftz : Login}
             //this.props.store.status ? MySiftz : Login
           />
           <Route
@@ -28,8 +28,8 @@ class App extends Component {
             path="/search-result"
             component={this.props.store.status ? Search : Login}
           />
-          {/* <Route exact path="/signup" component={Signup} /> */}
-          <Route path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="*" component={Home} />
         </Switch>
       </Router>
