@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
-import SignUp from "./components/Signup";
+import Signup from "./components/Signup";
 import Login from "./components/LogIn";
 import SearchResult from "./components/SearchResult";
 // import { RedirectUser } from "./components/Login/RedirectUser";
@@ -29,7 +29,7 @@ class App extends Component {
             path="/search-result"
             component={this.props.store.status ? Search : Login}
           />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route exact path="*" component={Home} />
         </Switch>
