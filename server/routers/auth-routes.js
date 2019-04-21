@@ -48,7 +48,7 @@ const signup = (req, res, done) => {
 
 const LOGIN_REDIRECT =
   process.env.NODE_ENV === "production"
-    ? "https://shiftz-jp.herokuapp.com/mySiftz"
+    ? "https://siftz.herokuapp.com/mySiftz"
     : "http://localhost:3000/mySiftz";
 
 // Login Route ##########################################################
@@ -102,7 +102,7 @@ router.get("/logout", (req, res) => {
   req.logout();
   if (process.env.NODE_ENV === "production")
     // For Heroku
-    res.redirect("https://shiftz-jp.herokuapp.com/login");
+    res.redirect("https://siftz.herokuapp.com/login");
   // For Local Host
   else res.redirect("http://localhost:3000/login");
 });
@@ -113,7 +113,7 @@ router.get("/google", googleauth);
 //auth callback from google
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   if (process.env.NODE_ENV === "production")
-    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
+    res.redirect("https://siftz.herokuapp.com/mySiftz");
   else res.redirect("http://localhost:3000/mySiftz");
 });
 
@@ -128,7 +128,7 @@ router.get(
     if (err.name === "TokenError") {
       if (process.env.NODE_ENV === "production")
         // For Heroku
-        res.redirect("https://shiftz-jp.herokuapp.com/login");
+        res.redirect("https://siftz.herokuapp.com/login");
       // For Local Host
       else res.redirect("http://localhost:3000/login");
     } else {
@@ -138,7 +138,7 @@ router.get(
   (req, res) => {
     if (process.env.NODE_ENV === "production")
       // For Heroku
-      res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
+      res.redirect("https://siftz.herokuapp.com/mySiftz");
     // For Local Host
     else res.redirect("http://localhost:3000/mySiftz");
   }
@@ -154,7 +154,7 @@ router.get(
     if (err.name === "TokenError") {
       if (process.env.NODE_ENV === "production")
         // For Heroku
-        res.redirect("https://shiftz-jp.herokuapp.com/login");
+        res.redirect("https://siftz.herokuapp.com/login");
       // For Local Host
       else res.redirect("http://localhost:3000/login");
     } else {
@@ -163,7 +163,7 @@ router.get(
   (req, res) => {
     if (process.env.NODE_ENV === "production")
       // For Heroku
-      res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
+      res.redirect("https://siftz.herokuapp.com/mySiftz");
     // For Local Host
     else res.redirect("http://localhost:3000/mySiftz");
   }

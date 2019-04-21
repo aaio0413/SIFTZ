@@ -4,7 +4,7 @@ import SongCard from "../SongCard";
 // import axios from "axios";
 const SONG =
   process.env.NODE_ENV === "production"
-    ? "https://shiftz-jp.herokuapp.com/api/mySiftz/search/night"
+    ? "https://siftz.herokuapp.com/api/mySiftz/search/night"
     : "http://localhost:3090/api/mySiftz/search/night";
 class MySiftz extends React.Component {
   constructor(props) {

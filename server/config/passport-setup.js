@@ -124,7 +124,7 @@ passport.use(
       callbackURL: "/auth/facebook/redirect",
       clientID: process.env.APP_ID,
       clientSecret: process.env.APP_SECRET
-      // callbackURL: "https://shiftz-jp.herokuapp.com/auth/google/redirect"
+      // callbackURL: "https://siftz.herokuapp.com/auth/google/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
       //passport callback function

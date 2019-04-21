@@ -6,19 +6,19 @@ import HeaderLogin from "../Global/HeaderLogin";
 
 const FORM_SUBMIT =
   process.env.NODE_ENV === "production"
-    ? "https://shiftz-jp.herokuapp.com/auth/login"
+    ? "https://siftz.herokuapp.com/auth/login"
     : "http://localhost:3090/auth/login";
 const GOOGLE_LOGIN =
   process.env.NODE_ENV === "production"
-    ? "https://shiftz-jp.herokuapp.com/auth/google"
+    ? "https://siftz.herokuapp.com/auth/google"
     : "http://localhost:3090/auth/google";
 const FACEBOOK_LOGIN =
   process.env.NODE_ENV === "production"
-    ? "https://shiftz-jp.herokuapp.com/auth/facebook"
+    ? "https://siftz.herokuapp.com/auth/facebook"
     : "http://localhost:3090/auth/facebook";
 const INSTA_LOGIN =
   process.env.NODE_ENV === "production"
-    ? "https://shiftz-jp.herokuapp.com/auth/instagram"
+    ? "https://siftz.herokuapp.com/auth/instagram"
     : "http://localhost:3090/auth/instagram";
 
 class LogIn extends React.Component {
@@ -103,7 +103,6 @@ class LogIn extends React.Component {
             </div>
             <div className="form-group">
               <input
-                type="password"
                 type="password"
                 name="password"
                 value={this.state.password}

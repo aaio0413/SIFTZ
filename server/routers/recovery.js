@@ -9,8 +9,8 @@ const crypto = require("crypto");
 const async = require("async");
 const nodemailer = require("nodemailer");
 //list of strategies
-const ID = process.env.CLIENT_ID;
-const SECRET = process.env.CLIENT_SECRET;
+const ID = process.env.GOOGLE_CLIENT;
+const SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 const localStrategy = passport.authenticate("local", { session: true }); // Local Strategy
 const googleauth = passport.authenticate("google", { scope: ["Email"] }); // google Strategy
@@ -27,7 +27,7 @@ router.get("/reset/:user", function(req, res) {
         // return res.redirect("http://localhost:3000/forgot");
         if (process.env.NODE_ENV === "production")
           // For Heroku
-          return res.redirect("https://shiftz-jp.herokuapp.com/forgot");
+          return res.redirect("https://siftz.herokuapp.com/forgot");
         // For Local Host
         else return res.redirect("http://localhost:3000/forgot");
       }
@@ -35,7 +35,7 @@ router.get("/reset/:user", function(req, res) {
       if (process.env.NODE_ENV === "production")
         // For Heroku
         return res.redirect(
-          "https://shiftz-jp.herokuapp.com/credentials/" + req.params.user
+          "https://siftz.herokuapp.com/credentials/" + req.params.user
         );
       // For Local Host
       else
@@ -63,7 +63,7 @@ router.post("/credentials", (req, res) => {
 
         if (process.env.NODE_ENV === "production")
           // For Heroku
-          return res.redirect("https://shiftz-jp.herokuapp.com/forgot");
+          return res.redirect("https://siftz.herokuapp.com/forgot");
         // For Local Host
         else return res.redirect("http://localhost:3000/forgot");
       }
