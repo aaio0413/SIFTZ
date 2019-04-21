@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import HeaderLogin from "../Global/HeaderLogin";
-
+import { connect } from "react-redux";
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -87,4 +87,24 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+const mapStateToProps = state => {
+  return {
+    store: state
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    Login: () => {
+      dispatch({
+        type: "Login"
+      });
+    },
+    Logout: () => {
+      dispatch({ type: "Logout" });
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Signup);
