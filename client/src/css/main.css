@@ -258,7 +258,7 @@ li p {
 }
 
 .main-picture {
-  background-image: url("../images/beach-beach-chairs-blue-sky-1174732\ copy.jpg");
+  background-image: url("../images/beach-chairs.jpg");
   height: 770px;
   background-size: cover;
   background-position-y: 100%;
@@ -280,7 +280,7 @@ li p {
 
 /* Photo by Stephen Niemeier from Pexels */
 .main-picture-for-my-shiftz {
-  background-image: url("../images/audio-dj-mix-63703\ copy.jpg");
+  background-image: url("../images/audio-dj-mix.jpg");
   height: 661px;
   background-size: cover;
   background-position-y: 46%;
@@ -323,7 +323,7 @@ li p {
 /*                                   ###################        SEARCH PAGE                   ########################                    */
 
 .main-picture-for-search {
-  background-image: url("../images/abstract-art-background-1037999\ copy.jpg");
+  background-image: url("../images/abstractArtBackground.jpg");
   height: 500px;
   background-size: cover;
   background-position-y: 49%;

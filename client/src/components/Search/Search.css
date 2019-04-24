@@ -1,7 +1,7 @@
 .whole-seach-component-wrap {
   height: 100vh;
   text-align: center;
-  background-image: url("../../images/abstract-art-background-1037999\ copy.jpg");
+  background-image: url("../../images/abstractArtBackground.jpg");
   background-size: cover;
 }
 
@@ -39,7 +39,7 @@
 .searchResultHeader {
   background-position: center;
   height: 70vh;
-  background-image: url("../../images/abstract-art-background-1037999\ copy.jpg");
+  background-image: url("../../images/abstractArtBackground.jpg");
   background-size: cover;
 }
 
