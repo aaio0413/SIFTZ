@@ -15,7 +15,8 @@
   "homepage": "https://github.com/aaio0413/SIFTZ#readme",
   "scripts": {
     "test": "test",
-    "app-install": "npm install & npm install --prefix client",
+    "init": "npm install & npm install --prefix client",
+    "build": "npm run build --prefix client",
     "start": "node server/index.js",
     "server": "nodemon server/index.js",
     "client": "npm start --prefix client",
@@ -41,7 +42,6 @@
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^1.0.0",
     "passport-instagram": "^1.0.0",
-    "path": "^0.12.7",
-    "yarn": "^1.13.0"
+    "path": "^0.12.7"
   }
 }
