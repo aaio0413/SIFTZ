@@ -22,12 +22,12 @@ passport.use(
       // callbackURL: "http://localhost:3090/api/auth/google/redirect", //this is for local
       clientID: process.env.GOOGLE_CLIENT,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://shiftz-jp.herokuapp.com/api/auth/google/redirect"
+      callbackURL: "https://lit-scrubland-24877.herokuapp.com/api/auth/google/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then(userExist => {
         if (userExist) {
-          console.log("user found", userExsist);
+          console.log("user found", userExist);
           done(null, userExist);
         } else {
           new User({
@@ -49,11 +49,11 @@ passport.use(
     {
       clientID: process.env.INSTAGRAM_CLIENT,
       clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
-      callbackURL: "https://shiftz-jp.herokuapp.com/api/auth/instagram/redirect"
+      callbackURL: "https://lit-scrubland-24877.herokuapp.com/api/auth/instagram/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then(userExist => {
-        if (userExsist) {
+        if (userExist) {
           console.log("user found", userExist);
           done(null, userExist);
         } else {
@@ -76,11 +76,11 @@ passport.use(
     {
       clientID: process.env.FB_APP_ID,
       clientSecret: process.env.FB_APP_SECRET,
-      callbackURL: "https://shiftz-jp.herokuapp.com/api/auth/facebook/redirect"
+      callbackURL: "https://lit-scrubland-24877.herokuapp.com/api/auth/facebook/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then(userExist => {
-        if (userExsist) {
+        if (userExist) {
           console.log("user found", userExist);
           done(null, userExist);
         } else {

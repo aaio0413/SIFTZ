@@ -1,11 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-// auth login
-// router.get("/login", (req, res) => {
-//   res.render("login", { user: req.user });
-// });
-
 router.get("/login", (req, res) => {
   res.render("newLogin", { user: req.user });
 });
@@ -29,6 +24,7 @@ router.get(
 );
 router.get("/instagram", passport.authenticate("instagram"));
 router.get("/facebook", passport.authenticate("facebook"));
+
 //auth callback from google
 router.get(
   "/google/redirect",
@@ -39,7 +35,7 @@ router.get(
   }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
+      res.redirect("https://lit-scrubland-24877.herokuapp.com/login"); // for local
     } else {
       // Handle other errors here
     }
@@ -50,44 +46,24 @@ router.get(
       username: req.user.username
     };
     // res.send(userInfo);
-    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz/");
+    res.redirect("https://lit-scrubland-24877.herokuapp.com/mySiftz/");
     // res.redirect("http://localhost:3000/mySiftz"); //local
     //res.send(req.user);
   }
 );
-
-// router.get("/google/redirect", function(req, res, next) {
-//   passport.authenticate("google", function(err, user, info) {
-//     if (err) {
-//       console.log(err);
-//       return next(err);
-//     }
-//     if (!user) {
-//       return res.redirect("/login");
-//     }
-//     req.logIn(user, function(err) {
-//       if (err) {
-//         return next(err);
-//       }
-//       return res.redirect("http://shiftz-jp.herokuapp.com/mySiftz");
-//     });
-//   })(req, res, next);
-// });
 
 router.get(
   "/instagram/redirect",
   passport.authenticate("instagram", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
+      res.redirect("https://lit-scrubland-24877.herokuapp.com/login"); // for local
     } else {
       // Handle other errors here
     }
   },
   (req, res) => {
-    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
-    // res.redirect("http://localhost:3000/mySiftz"); //local
-    //res.send(req.user);
+    res.redirect("https://lit-scrubland-24877.herokuapp.com/mySiftz");
   }
 );
 
@@ -96,13 +72,13 @@ router.get(
   passport.authenticate("facebook", { failureRedirect: "/login" }),
   (err, req, res, next) => {
     if (err.name === "TokenError") {
-      res.redirect("https://shiftz-jp.herokuapp.com/login"); // for local
+      res.redirect("https://lit-scrubland-24877.herokuapp.com/login"); // for local
     } else {
       // Handle other errors here
     }
   },
   (req, res) => {
-    res.redirect("https://shiftz-jp.herokuapp.com/mySiftz");
+    res.redirect("https://lit-scrubland-24877.herokuapp.com/mySiftz");
     // res.redirect("http://localhost:3000/mySiftz"); //local
     //res.send(req.user);
   }
@@ -121,9 +97,9 @@ module.exports = router;
       xfbml      : true,
       version    : '{api-version}'
     });
-      
-    FB.AppEvents.logPageView();   
-      
+
+    FB.AppEvents.logPageView();
+
   };
 
   (function(d, s, id){
