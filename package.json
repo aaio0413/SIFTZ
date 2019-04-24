@@ -15,7 +15,7 @@
   "homepage": "https://github.com/aaio0413/SIFTZ#readme",
   "scripts": {
     "test": "test",
-    "client-install": "npm install --prefix client",
+    "app-install": "npm install & npm install --prefix client",
     "start": "node server/index.js",
     "server": "nodemon server/index.js",
     "client": "npm start --prefix client",
@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
     "cross-env": "^1.0.8",
