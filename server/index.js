@@ -1,16 +1,16 @@
 require("dotenv").config();
-const express = require("express");
+
 const authRoutes = require("./routers/auth-routes");
 const mySiftzRoutes = require("./routers/mySiftz-routes");
-const path = require("path");
-const morgan = require("morgan");
-const passportSetup = require("./config/passport-setup");
-const mongodb = require("mongoose");
-const cookieSession = require("cookie-session");
-const passport = require("passport");
 const bodyParser = require("body-parser");
-
 const cors = require("cors");
+const cookieSession = require("cookie-session");
+const express = require("express");
+const mongodb = require("mongoose");
+const morgan = require("morgan");
+const passport = require("passport");
+const passportSetup = require("./config/passport-setup");
+const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 3090;
@@ -33,6 +33,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
 
+// Static file declaration:
+app.use(express.static(path.join(__dirname, '../client/build')));
+
 // set up routes
 app.use("/api/auth", authRoutes);
 app.use("/api/mySiftz", mySiftzRoutes);
@@ -43,9 +46,6 @@ mongodb.connect(process.env.MONGO_DB_URL, () => {
   console.log("connected mongoDB");
 });
 
-// Static file declaration:
-app.use(express.static(path.join(__dirname, '../client/build')));
-
 // Production:
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -53,11 +53,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
   });
 }
-
-// Build:
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'../client/public/index.html'));
-})
 
 // Start server:
 app.listen(port, () => {
