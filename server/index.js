@@ -8,8 +8,8 @@ const cookieSession = require("cookie-session");
 const express = require("express");
 const mongodb = require("mongoose");
 const morgan = require("morgan");
-const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
+const passport = require("passport");
 const path = require("path");
 
 const app = express();

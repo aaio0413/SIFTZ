@@ -20,9 +20,9 @@ passport.use(
       //option for strategy
 
       // callbackURL: "http://localhost:3090/api/auth/google/redirect", //this is for local
-      clientID: process.env.GOOGLE_CLIENT,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://shiftz-jp.herokuapp.com/api/auth/google/redirect"
+      clientID: '560812597305-qf5ndofd5mkk5cprt8fntu0rud73ud4q.apps.googleusercontent.com',
+      clientSecret: 'uRepZKZFxacnsxl4Ftg56bln',
+      callbackURL: "https://lit-scrubland-24877.herokuapp.com/api/auth/google/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
       //passport callback function
