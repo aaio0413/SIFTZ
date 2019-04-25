@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "cookie-session": "^2.0.0-beta.3",
@@ -42,6 +43,7 @@
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^1.0.0",
     "passport-instagram": "^1.0.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7"
   }
 }
