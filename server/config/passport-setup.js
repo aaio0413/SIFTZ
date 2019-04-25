@@ -27,7 +27,7 @@ passport.use(
         if (user) {
           //
           console.log("user found", user);
-          done(null, userExist);
+          done(null, user);
         } else {
           new User({
             userName: profile.displayName,
