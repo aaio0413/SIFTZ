@@ -1,27 +1,29 @@
 const router = require("express").Router();
 const passport = require("passport");
 
+
 router.get("/login", (req, res) => {
+  //
+  console.log('login route hit');
   res.render("newLogin", { user: req.user });
 });
 
 router.get("/signup", (req, res) => {
+  //
+  console.log('sign up route hit');
   res.render("signUp");
 });
 
-// auth logout
+// Auth logout
 router.get("/logout", (req, res) => {
-  // handle with passport
+  //
+  console.log('logging out hit');
   res.send("logging out");
+  res.redirect('/');
 });
 
-// auth with google+
-router.get(
-  "/google",
-  passport.authenticate("google", {
-    scope: ["profile"] //add whatever you want from user
-  })
-);
+// Passport Authentication routes:
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 router.get("/instagram", passport.authenticate("instagram"));
 router.get("/facebook", passport.authenticate("facebook"));
 
@@ -41,13 +43,13 @@ router.get(
     }
   },
   (req, res) => {
-    console.log("request user from google", req.user);
+    console.log("request user from google", req);
+    console.log("response:" + res)
     const userInfo = {
       username: req.user.username
     };
     // res.send(userInfo);
     res.redirect("https://lit-scrubland-24877.herokuapp.com/mySiftz/");
-    // res.redirect("http://localhost:3000/mySiftz"); //local
     //res.send(req.user);
   }
 );
@@ -63,6 +65,8 @@ router.get(
     }
   },
   (req, res) => {
+    console.log('request:' + req)
+    console.log('response:' + res)
     res.redirect("https://lit-scrubland-24877.herokuapp.com/mySiftz");
   }
 );
@@ -78,6 +82,8 @@ router.get(
     }
   },
   (req, res) => {
+    console.log('request:' + req)
+    console.log('response:' + res)
     res.redirect("https://lit-scrubland-24877.herokuapp.com/mySiftz");
     // res.redirect("http://localhost:3000/mySiftz"); //local
     //res.send(req.user);

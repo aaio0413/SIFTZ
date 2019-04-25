@@ -14,20 +14,19 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+// Google passport strategy:
 passport.use(
   new GoogleStrategy(
     {
-      //option for strategy
-
-      // callbackURL: "http://localhost:3090/api/auth/google/redirect", //this is for local
       clientID: process.env.GOOGLE_CLIENT,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "https://lit-scrubland-24877.herokuapp.com/api/auth/google/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id }).then(userExist => {
-        if (userExist) {
-          console.log("user found", userExist);
+      User.findOne({ googleId: profile.id }).then(user => {
+        if (user) {
+          //
+          console.log("user found", user);
           done(null, userExist);
         } else {
           new User({
@@ -36,6 +35,7 @@ passport.use(
           })
             .save()
             .then(newUser => {
+              //
               console.log("new user created", newUser);
               done(null, newUser);
             });
@@ -44,6 +44,8 @@ passport.use(
     }
   )
 );
+
+
 passport.use(
   new InstagramStrategy(
     {
