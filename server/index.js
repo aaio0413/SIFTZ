@@ -8,15 +8,12 @@ const cookieSession = require("cookie-session");
 const express = require("express");
 const mongodb = require("mongoose");
 const morgan = require("morgan");
-const passportSetup = require("./config/passport-setup");
 const passport = require("passport");
 const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 3090;
 
-// Type indicates ALL header types OK
-app.use(bodyParser.json({ type: "*/*" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

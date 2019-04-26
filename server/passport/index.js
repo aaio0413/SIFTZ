@@ -1,9 +1,11 @@
 const passport = require('passport');
-const FacebookStrategy = required('./facebookStrategy');
-const GoogleStrategy = required('./googleStrategy');
-const InstagramStrategy = required('./instagramStrategy');
-const LocalStrategy = required('./localStrategy');
-const User = require('../models/user.js');
+const FacebookStrategy = require('./facebookStrategy');
+const GoogleStrategy = require('./googleStrategy');
+const JwtStrategy = require('./JwtStrategy');
+//const InstagramStrategy = require('./instagramStrategy');
+const LocalStrategy = require('./localStrategy');
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
 
 passport.serializeUser((user, done) => {
   console.log('Serialize:', user);
@@ -18,8 +20,9 @@ passport.deserializeUser((id, done) => {
 
 // ==== Register Strategies ====
 passport.use(FacebookStrategy);
-passport.use(GoogleStratgey);
-passport.use(InstagramStrategy);
+passport.use(GoogleStrategy);
+//passport.use(InstagramStrategy);
+passport.use(JwtStrategy);
 passport.use(LocalStrategy);
 
 module.exports = passport
