@@ -79,7 +79,7 @@ router.post('/login', (req, res) => {
 });
 
 // Passport Authentication routes:ßßß
-router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 router.get(
   '/auth/google/callback',
   passport.authenticate('google', {
@@ -90,14 +90,14 @@ router.get(
     res.redirect('/my-siftz');
   });
 
-router.get('/auth/instagram', passport.authenticate('instagram'));
+router.get('/instagram', passport.authenticate('instagram'));
 router.get(
   '/auth/instagram/callback',
   passport.authenticate('instagram', { successRedirect: '/my-siftz',
                                        failureRedirect: '/login' }));
 
 
-router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get('/facebook', passport.authenticate('facebook'));
 router.get(
   '/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/my-siftz',
