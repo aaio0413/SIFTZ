@@ -83,8 +83,8 @@ router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 router.get(
   '/auth/google/callback',
   passport.authenticate('google', {
-    successRedirect: 'https://lit-scrubland-24877.herokuapp.com/my-siftz',
-    failureRedirect: 'https://lit-scrubland-24877.herokuapp.com/login'
+    successRedirect: '/my-siftz',
+    failureRedirect: '/login'
   }),
   (req, res) => {
     res.redirect('/my-siftz');
@@ -93,15 +93,15 @@ router.get(
 router.get('/instagram', passport.authenticate('instagram'));
 router.get(
   '/auth/instagram/callback',
-  passport.authenticate('instagram', { successRedirect: 'https://lit-scrubland-24877.herokuapp.com/my-siftz',
-                                       failureRedirect: 'https://lit-scrubland-24877.herokuapp.com/login' }));
+  passport.authenticate('instagram', { successRedirect: '/my-siftz',
+                                       failureRedirect: '/login' }));
 
 
 router.get('/facebook', passport.authenticate('facebook'));
 router.get(
   '/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: 'https://lit-scrubland-24877.herokuapp.com/my-siftz',
-                                      failureRedirect: 'https://lit-scrubland-24877.herokuapp.com/login' }));
+  passport.authenticate('facebook', { successRedirect: '/my-siftz',
+                                      failureRedirect: '/login' }));
 
 
 module.exports = router;
