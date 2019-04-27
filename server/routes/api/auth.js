@@ -78,7 +78,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-// Passport Authentication routes:ßßß
+// Passport Authentication routes:
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 router.get(
   '/auth/google/callback',
@@ -86,22 +86,40 @@ router.get(
     successRedirect: '/my-siftz',
     failureRedirect: '/login'
   }),
-  (req, res) => {
-    res.redirect('/my-siftz');
+  (error, req, res) => {
+    if (error) {
+      res.redirect('https://lit-scrubland-24877.herokuapp.com/login');
+    } else {
+      res.redirect('https://lit-scrubland-24877.herokuapp.com/my-siftz');
+    }
   });
 
 router.get('/instagram', passport.authenticate('instagram'));
 router.get(
   '/auth/instagram/callback',
-  passport.authenticate('instagram', { successRedirect: '/my-siftz',
-                                       failureRedirect: '/login' }));
+  passport.authenticate('instagram', {
+    failureRedirect: '/login'
+  }),
+  (error, req, res) => {
+    if (error) {
+      res.redirect('https://lit-scrubland-24877.herokuapp.com/login');
+    } else {
+      res.redirect('https://lit-scrubland-24877.herokuapp.com/my-siftz');
+    });
 
 
 router.get('/facebook', passport.authenticate('facebook'));
 router.get(
   '/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/my-siftz',
-                                      failureRedirect: '/login' }));
+  passport.authenticate('facebook', {
+    failureRedirect: '/login'
+  }),
+  (error, req, res) => {
+    if (error) {
+      res.redirect('https://lit-scrubland-24877.herokuapp.com/login');
+    } else {
+      res.redirect('https://lit-scrubland-24877.herokuapp.com/my-siftz');
+    });
 
 
 module.exports = router;

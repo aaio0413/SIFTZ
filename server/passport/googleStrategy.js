@@ -10,17 +10,16 @@ const strategy = new GoogleStrategy(
   (accessToken, refreshToken, profile, done) => {
     User.findOne({ googleId: profile.id }, (error, user) => {
       if (error) {
-        console.log(error);
         return done(null, user);
       }
 
       if (user) {
         return done(null, user);
       } else {
-        console.log('id:', id, 'profile:', profile);
 
         const newGoogleUser = new User({
-          googleId: profile.id
+          googleId: profile.id,
+          email: profile.email
         })
 
         // Save user:
