@@ -16,9 +16,9 @@
   "scripts": {
     "test": "test",
     "init": "npm install & npm install --prefix client",
-    "build": "NODE_ENV=production npm run build --prefix client",
+    "build": "npm run build --prefix client",
     "start": "node server/server.js",
-    "server": "nodemon server/index.js",
+    "server": "nodemon server/server.js",
     "start:old": "node server/index.js",
     "server:old": "nodemon server/index.js",
     "client": "npm start --prefix client",

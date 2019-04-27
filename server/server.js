@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const passport = require('./passport');
 const path = require("path");
 const historyApiFallback = require('connect-history-api-fallback');
-
+const port = process.env.PORT || 8080;
 const auth = require('./routes/api/auth');
 const siftz = require('./routes/api/siftz');
 
@@ -21,8 +21,6 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.use(cors());
-
 // MongoDB:
 const db = process.env.MONGO_DB_URL;
 
@@ -35,6 +33,10 @@ mongoose.connect(db, {
 // Passport:
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
+
+// Static file declaration:
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Routes:
 app.use('/api/auth', auth);
@@ -45,17 +47,12 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('../client/build'));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
   });
 }
 
 app.use(historyApiFallback({
   verbose: false
 }));
-
-// Static file declaration:
-app.use(express.static(path.join(__dirname, '../client/build')));
-
-const port = process.env.PORT || 8080;
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
