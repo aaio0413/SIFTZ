@@ -2,7 +2,7 @@ const passport = require('passport');
 const FacebookStrategy = require('./facebookStrategy');
 const GoogleStrategy = require('./googleStrategy');
 const JwtStrategy = require('./jwtStrategy');
-//const InstagramStrategy = require('./instagramStrategy');
+const InstagramStrategy = require('./instagramStrategy');
 const LocalStrategy = require('./localStrategy');
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
@@ -21,7 +21,7 @@ passport.deserializeUser((id, done) => {
 // ==== Register Strategies ====
 passport.use(FacebookStrategy);
 passport.use(GoogleStrategy);
-//passport.use(InstagramStrategy);
+passport.use(InstagramStrategy);
 passport.use(JwtStrategy);
 passport.use(LocalStrategy);
 
