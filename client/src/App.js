@@ -33,7 +33,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
-            path="/mySiftz"
+            path="/my-siftz"
             // component={this.state.isloggedin ? MySiftz : Login}
             component={MySiftz}
           />
@@ -47,10 +47,10 @@ class App extends Component {
             // component={this.state.isloggedin ? Search : Login}
             component={SearchResult}
           />
-          <Route expact path="/signup" component={SignUp} />
+          <Route exact path="/signup" component={SignUp} />
 
           <Route
-            expact
+            exact
             path="/login"
             // component={this.state.isloggedin ? Login : Login}
             component={LogIn}

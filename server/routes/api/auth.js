@@ -5,6 +5,9 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 
+// Passport:
+const passport = require('../../passport');
+
 // User model:
 const User = require('../../models/user');
 
@@ -74,5 +77,31 @@ router.post('/login', (req, res) => {
     });
   });
 });
+
+// Passport Authentication routes:ßßß
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+router.get(
+  '/auth/google/callback',
+  passport.authenticate('google', {
+    successRedirect: '/my-siftz',
+    failureRedirect: '/login'
+  }),
+  (req, res) => {
+    res.redirect('/my-siftz');
+  });
+
+router.get('/auth/instagram', passport.authenticate('instagram'));
+router.get(
+  '/auth/instagram/callback',
+  passport.authenticate('instagram', { successRedirect: '/my-siftz',
+                                       failureRedirect: '/login' }));
+
+
+router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get(
+  '/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/my-siftz',
+                                      failureRedirect: '/login' }));
+
 
 module.exports = router;

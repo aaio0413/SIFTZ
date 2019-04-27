@@ -22,7 +22,7 @@ class MySiftz extends React.Component {
   };
 
   componentDidMount() {
-    this._fetchSongReqeust = fetch("/api/mySiftz/search/night", {
+    this._fetchSongReqeust = fetch("/api/my-siftz/search/night", {
       headers: { crossDomain: true }
     })
       .then(result => {

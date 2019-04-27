@@ -44,21 +44,33 @@ class LogIn extends React.Component {
               </div>
               <div className="form-group col-md-6">
                 <input
-                  type="password"
+                  type="username"
                   className="form-control"
-                  id="inputPassword4"
-                  placeholder="Confirm Email"
+                  id="username"
+                  placeholder="Username"
                 />
               </div>
             </div>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                id="inputAddress"
-                placeholder="Password"
-              />
+
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputPassword"
+                  placeholder="Password"
+                />
+              </div>
+              <div className="form-group col-md-6">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputPassword"
+                  placeholder="Password"
+                />
+              </div>
             </div>
+
             <div className="form-row signUpButtonWrap">
               <div className="form-check">
                 <input
@@ -78,7 +90,7 @@ class LogIn extends React.Component {
           </form>
 
           <h2 className="leadToSignUp">Don't have an account?</h2>
-          <Link to="/auth/signUp">
+          <Link to="/signup">
             <button className="btn btn-primary signUp-btn">SIGN UP</button>
           </Link>
         </div>

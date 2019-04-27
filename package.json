@@ -16,10 +16,10 @@
   "scripts": {
     "test": "test",
     "init": "npm install & npm install --prefix client",
-    "build": "npm run build --prefix client",
-    "start:new": "nodemon server/server.js",
-    "start": "node server/index.js",
-    "server": "nodemon server/index.js",
+    "build": "NODE_ENV=production npm run build --prefix client",
+    "start": "nodemon server/server.js",
+    "start:old": "node server/index.js",
+    "server:old": "nodemon server/index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
@@ -29,6 +29,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
+    "connect-history-api-fallback": "^1.6.0",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
     "cross-env": "^1.0.8",

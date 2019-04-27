@@ -5,7 +5,7 @@ const strategy = new FacebookStrategy(
   {
     clientID: process.env.FB_APP_ID,
     clientSecret: process.env.FB_APP_SECRET,
-    callbackURL: "https://lit-scrubland-24877.herokuapp.com/auth/facebook/redirect"
+    callbackURL: "/auth/facebook/redirect"
   },
   (accessToken, refreshToken, profile, done) => {
     User.findOne({ googleId: profile.id }, (error, user) => {

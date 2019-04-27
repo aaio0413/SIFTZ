@@ -13,7 +13,7 @@ class HeaderHome extends Component {
         </Link>
         <div className="nav-right">
           <ul className="nav-items-right">
-            <Link to="/mySiftz">
+            <Link to="/my-siftz">
               <li>
                 <p>My Siftz</p>
               </li>
