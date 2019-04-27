@@ -105,8 +105,8 @@ router.get(
       res.redirect('https://lit-scrubland-24877.herokuapp.com/login');
     } else {
       res.redirect('https://lit-scrubland-24877.herokuapp.com/my-siftz');
-    });
-
+    }
+  });
 
 router.get('/facebook', passport.authenticate('facebook'));
 router.get(
@@ -119,7 +119,8 @@ router.get(
       res.redirect('https://lit-scrubland-24877.herokuapp.com/login');
     } else {
       res.redirect('https://lit-scrubland-24877.herokuapp.com/my-siftz');
-    });
+    }
+  });
 
 
 module.exports = router;
