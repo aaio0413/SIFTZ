@@ -5,7 +5,7 @@ const strategy = new GoogleStrategy(
   {
     clientID: process.env.GOOGLE_CLIENT,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: '	https://lit-scrubland-24877.herokuapp.com/auth/google/callback'
+    callbackURL: 'https://lit-scrubland-24877.herokuapp.com/auth/google/callback'
   },
   (accessToken, refreshToken, profile, done) => {
     User.findOne({ googleId: profile.id }, (error, user) => {
