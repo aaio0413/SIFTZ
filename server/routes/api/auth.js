@@ -81,7 +81,7 @@ router.post('/login', (req, res) => {
 // Passport Authentication routes:ßßß
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 router.get(
-  '/auth/google/callback',
+  '/google/callback',
   passport.authenticate('google', {
     successRedirect: '/my-siftz',
     failureRedirect: '/login'
@@ -92,14 +92,14 @@ router.get(
 
 router.get('/instagram', passport.authenticate('instagram'));
 router.get(
-  '/auth/instagram/callback',
+  '/instagram/callback',
   passport.authenticate('instagram', { successRedirect: '/my-siftz',
                                        failureRedirect: '/login' }));
 
 
 router.get('/facebook', passport.authenticate('facebook'));
 router.get(
-  '/auth/facebook/callback',
+  '/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/my-siftz',
                                       failureRedirect: '/login' }));
 
