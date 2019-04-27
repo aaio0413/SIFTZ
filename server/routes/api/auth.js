@@ -84,12 +84,8 @@ router.get(
   '/auth/google/callback',
   passport.authenticate('google',
   (req, res) => {
-    if (req.isAuthenticated()) {
-      res.redirect('/my-siftz')
-    } else {
-      res.redirect('/my-siftz')
-    }
-  }));
+    res.redirect('https://lit-scrubland-24877.herokuapp.com/my-siftz');
+  });
 
 router.get('/instagram', passport.authenticate('instagram'));
 router.get(
