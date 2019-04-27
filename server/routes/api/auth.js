@@ -86,7 +86,7 @@ router.get(
     failureRedirect: '/login'
   }),
   (error, req, res) => {
-    window.location.assign('https://lit-scrubland-24877.herokuapp.com/my-siftz')
+    return res.redirect('/my-siftz');
   });
 
 router.get('/instagram', passport.authenticate('instagram'));
