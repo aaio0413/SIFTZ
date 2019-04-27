@@ -39,12 +39,18 @@ router.post('/signup', (req, res) => {
   });
 });
 
+
 // Login user:
 router.post('/login', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
+  console.log('req:', req.body)
+  console.log('res:', res.body)
+
   User.findOne({ email }).then(user => {
+
+    console.log('user:', user)
     if (!user) {
       return res.status(404).json({ emailnotfound: 'Email not found.' });
     }
@@ -63,7 +69,7 @@ router.post('/login', (req, res) => {
           payload,
           process.env.COOKIEKEY,
           {
-            expiresIn: 31556926
+            expiresIn: 2000
           },
           (error, token) => {
             res.json({
@@ -76,6 +82,13 @@ router.post('/login', (req, res) => {
       }
     });
   });
+});
+
+
+// Logout user:
+router.post('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
 // Passport Authentication routes:

@@ -2,12 +2,17 @@ require('dotenv').config();
 
 const bodyParser = require('body-parser');
 const cors = require("cors");
+const cookieSession = require("cookie-session");
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('./passport');
 const path = require("path");
 const historyApiFallback = require('connect-history-api-fallback');
+
+// Port:
 const port = process.env.PORT || 8080;
+
+// Routes:
 const auth = require('./routes/api/auth');
 const siftz = require('./routes/api/siftz');
 
@@ -21,6 +26,14 @@ app.use(
 );
 app.use(bodyParser.json());
 
+// Cookie session:
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [process.env.COOKIEKEY]
+  })
+);
+
 // MongoDB:
 const db = process.env.MONGO_DB_URL;
 
@@ -30,10 +43,7 @@ mongoose.connect(db, {
 }).then(() => console.log("MongoDB connected."))
 .catch(error => console.log(error));
 
-// Passport:
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(cors());
+
 
 // Static file declaration:
 app.use(express.static(path.join(__dirname, '../client/build')));
@@ -41,6 +51,11 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 // Routes:
 app.use('/api/auth', auth);
 app.use('/api/my-siftz', siftz);
+
+// Passport:
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cors());
 
 // Serve static assets if in production:
 if (process.env.NODE_ENV === 'production') {
