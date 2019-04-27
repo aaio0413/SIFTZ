@@ -89,7 +89,7 @@ router.get(
     } else {
       res.redirect('/my-siftz')
     }
-  });
+  }));
 
 router.get('/instagram', passport.authenticate('instagram'));
 router.get(
