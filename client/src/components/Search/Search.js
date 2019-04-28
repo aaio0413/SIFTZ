@@ -53,7 +53,11 @@ class Search extends Component {
     console.log(searchParam);
 
     fetch(`/api/my-siftz/search/songParam/${searchParam}`, {
-      headers: { crossDomain: true }
+      headers: {
+                 crossDomain: true,
+                 'Content-Type': 'application/json',
+                 'Accept': 'application/json'
+               }
     })
       .then(result => {
         console.log("this is result", result);

@@ -1,16 +1,53 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import HeaderLogin from "../Global/HeaderLogin";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions/authActions";
+import classnames from "classnames";
 
 class LogIn extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      isLoggedIn: false
+      email: '',
+      password: '',
+      errors: {}
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/my-siftz");
+    }
+    if (nextProps.errors) {
+          this.setState({
+            errors: nextProps.errors
+          });
+        }
+      }
+
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    console.log('user:', userData);
+
+    this.props.loginUser(userData);
+  }
+
   render() {
+
+    const { errors } = this.state;
+
     return (
       <Fragment>
         <HeaderLogin />
@@ -34,40 +71,36 @@ class LogIn extends React.Component {
             </h2>
 
             <div className="form-row">
-              <div className="form-group col-md-6">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="inputEmail4"
-                  placeholder="Email"
-                />
-              </div>
-              <div className="form-group col-md-6">
-                <input
-                  type="username"
-                  className="form-control"
-                  id="username"
-                  placeholder="Username"
-                />
+              <div className="form-group col-md-12">
+                <input value={this.state.email}
+                       onChange={this.onChange}
+                       error={errors.email}
+                       className={connect("form-control", { invalid: errors.email || errors.emailnotfound })}
+                       placeholder="Email"
+                       type="email"
+                       id="email"
+                       />
+                 <span className="red-text">
+                  {errors.email}
+                  {errors.emailnotfound}
+                </span>
               </div>
             </div>
 
             <div className="form-row">
-              <div className="form-group col-md-6">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputPassword"
-                  placeholder="Password"
-                />
-              </div>
-              <div className="form-group col-md-6">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputPassword"
-                  placeholder="Password"
-                />
+              <div className="form-group col-md-12">
+              <input value={this.state.password}
+                     onChange={this.onChange}
+                     error={errors.password}
+                     className={classnames("form-control", { invalid: errors.password || errors.passwordincorrect })}
+                     placeholder="Password"
+                     type="password"
+                     id="password"
+                     />
+                     <span className="red-text">
+                      {errors.password}
+                      {errors.passwordincorrect}
+                     </span>
               </div>
             </div>
 
@@ -83,9 +116,12 @@ class LogIn extends React.Component {
                 </label>
               </div>
 
-              <button type="submit" className="btn btn-primary login-btn">
+              <button onClick={this.onSubmit}
+                      type="submit"
+                      className="btn btn-primary login-btn">
                 Login
               </button>
+
             </div>
           </form>
 
@@ -99,4 +135,18 @@ class LogIn extends React.Component {
   }
 }
 
-export default LogIn;
+LogIn.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(LogIn);

@@ -26,6 +26,10 @@ app.use(
 );
 app.use(bodyParser.json());
 
+app.use(historyApiFallback({
+  verbose: false
+}));
+
 // Cookie session:
 app.use(
   cookieSession({
@@ -45,8 +49,7 @@ mongoose.connect(db, {
 
 
 
-// Static file declaration:
-app.use(express.static(path.join(__dirname, '../client/build')));
+
 
 // Routes:
 app.use('/api/auth', auth);
@@ -66,8 +69,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.use(historyApiFallback({
-  verbose: false
-}));
+// Static file declaration:
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
