@@ -1,16 +1,56 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import HeaderLogin from "../Global/HeaderLogin";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions/authActions";
+import classnames from "classnames";
 
-class LogIn extends React.Component {
-  constructor(props) {
-    super(props);
+class SignUp extends React.Component {
+  constructor() {
+    super();
     this.state = {
-      isLoggedIn: false
+      email: '',
+      username: '',
+      password: '',
+      password2: '',
+      errors: {}
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    if (this.state.password != this.state.password2) {
+      alert('passwords do not match');
+    } else {
+
+      const newUser = {
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password
+      }
+      this.props.registerUser(newUser, this.props.history);
+      console.log('New User:', newUser);
+    }
+  };
+
   render() {
+
+    const { errors } = this.state;
+
     return (
       <Fragment>
         <HeaderLogin />
@@ -35,56 +75,87 @@ class LogIn extends React.Component {
 
             <div className="form-row">
               <div className="form-group col-md-6">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="inputEmail4"
-                  placeholder="Email"
-                />
+                <input value={this.state.email}
+                       onChange={this.onChange}
+                       error={errors.email}
+                       className={classnames("form-control", { invalid: errors.email})}
+                       placeholder="Email"
+                       type="email"
+                       id="email"
+                       />
+                       <span className="red-text">{errors.email}</span>
               </div>
               <div className="form-group col-md-6">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="inputPassword4"
-                  placeholder="Confirm Email"
-                />
+                <input value={this.state.username}
+                       onChange={this.onChange}
+                       error={errors.username}
+                       className={classnames("form-control", { invalid: errors.username })}
+                       placeholder="Username"
+                       type="username"
+                       id="username"
+                       />
+                       <span className="red-text">{errors.username}</span>
               </div>
             </div>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                id="inputAddress"
-                placeholder="Password"
-              />
+
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input value={this.state.password}
+                       onChange={this.onChange}
+                       error={errors.password}
+                       className={classnames("form-control", { invalid: errors.password })}
+                       placeholder="Password"
+                       type="password"
+                       id="password"
+                       />
+                       <span className="red-text">{errors.password}</span>
+              </div>
+              <div className="form-group col-md-6">
+                <input value={this.state.password2}
+                       onChange={this.onChange}
+                       error={errors.password}
+                       placeholder="Password"
+                       className={classnames("form-control", { invalid: errors.password })}
+                       type="password"
+                       id="password2"
+                       />
+                       <span className="red-text">{errors.password2}</span>
+              </div>
             </div>
+
             <div className="form-row signUpButtonWrap">
-              <div className="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label className="form-check-label" htmlFor="exampleCheck1">
-                  Remember me
-                </label>
-              </div>
 
-              <button type="submit" className="btn btn-primary login-btn">
-                SignUp
-              </button>
+              <button onClick={this.onSubmit}
+                      type="submit"
+                      className="btn btn-primary login-btn"
+                      >
+                      SignUp
+                      </button>
             </div>
-          </form>
 
-          <h2 className="leadToSignUp">Already have an account?</h2>
-          <Link to="/auth/login">
-            <button className="btn btn-primary signUp-btn">LOG IN</button>
-          </Link>
+            <h2 className="leadToSignUp">Already have an account?</h2>
+            <Link to="/login">
+              <button className="btn btn-primary signUp-btn">LOG IN</button>
+            </Link>
+          </form>
         </div>
       </Fragment>
     );
   }
 }
 
-export default LogIn;
+SignUp.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(SignUp));;

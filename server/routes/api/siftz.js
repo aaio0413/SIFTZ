@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const mongodb = require("mongoose");
-const Songs = require("../models/song-model");
-
-console.log("shits this page is loading");
+const Songs = require("../../models/song-model");
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -12,12 +10,6 @@ const authCheck = (req, res, next) => {
     next();
   }
 };
-
-// router.get("/", authCheck, (err, req, res, next) => {
-//   console.log(req.user);
-//   console.log(err);
-//   res.json({ userName: req.user.userName });
-// });
 
 router.get("/search/:time", (req, res) => {
   const timeChanger = req.params.time;

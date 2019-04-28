@@ -7,6 +7,10 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import store from "./store";
+
 import Home from "./components/Home";
 import MySiftz from "./components/MySiftz";
 import Search from "./components/Search";
@@ -29,35 +33,19 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route
-            path="/mySiftz"
-            // component={this.state.isloggedin ? MySiftz : Login}
-            component={MySiftz}
-          />
-          <Route
-            path="/search"
-            // component={this.state.isloggedin ? Search : Login}
-            component={Search}
-          />
-          <Route
-            path="/search-result"
-            // component={this.state.isloggedin ? Search : Login}
-            component={SearchResult}
-          />
-          <Route expact path="/signup" component={SignUp} />
-
-          <Route
-            expact
-            path="/login"
-            // component={this.state.isloggedin ? Login : Login}
-            component={LogIn}
-          />
-          <Route exact path="*" component={Home} />
-        </Switch>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/my-siftz" component={MySiftz} />
+            <Route path="/search" component={Search} />
+            <Route path="/search-result" component={SearchResult} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/login" component={LogIn} />
+            <Route exact path="*" component={Home} />
+          </Switch>
+        </Router>
+      </Provider>
     );
   }
 }

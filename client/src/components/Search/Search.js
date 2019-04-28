@@ -52,8 +52,12 @@ class Search extends Component {
     let searchParam = this.state.userInput.join("+");
     console.log(searchParam);
 
-    fetch(`/api/mySiftz/search/songParam/${searchParam}`, {
-      headers: { crossDomain: true }
+    fetch(`/api/my-siftz/search/songParam/${searchParam}`, {
+      headers: {
+                 crossDomain: true,
+                 'Content-Type': 'application/json',
+                 'Accept': 'application/json'
+               }
     })
       .then(result => {
         console.log("this is result", result);

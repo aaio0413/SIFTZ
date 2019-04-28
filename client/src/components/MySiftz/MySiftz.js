@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
+import { Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import HeaderHome from "../Global/HeaderHome";
 import SongCard from "../SongCard";
-// import axios from "axios";
 
 class MySiftz extends React.Component {
   constructor(props) {
@@ -22,26 +24,28 @@ class MySiftz extends React.Component {
   };
 
   componentDidMount() {
-    this._fetchSongReqeust = fetch("/api/mySiftz/search/night", {
-      headers: { crossDomain: true }
+    this._fetchSongReqeust = fetch("/api/my-siftz/search/night", {
+      headers: {
+                 crossDomain: true,
+                 'Content-Type': 'application/json',
+                 'Accept': 'application/json'
+               }
     })
-      .then(result => {
-        console.log("this is result", result);
-        return result.json();
-      })
-      .then(songData => {
-        console.log(songData);
-        this.setState({ data: songData });
-        console.log(
-          "lets see what is the state data index 0",
-          this.state.data[0]
-        );
-        this._fetchSongReqeust = null;
-      });
+    .then(result => {
+      console.log("this is result", result);
+      console.log('response:', result.response);
+      return result.json();
+    })
+    .then(songData => {
+      console.log(songData);
+      this.setState({ data: songData });
+      console.log(
+        "lets see what is the state data index 0",
+        this.state.data[0]
+      );
+      this._fetchSongReqeust = null;
+    });
 
-    // trimmingUrl(this.songData.url).then(url => {
-    //   this.setState({});
-    // });
     console.log("lets see what is the state", this.state.data);
   }
 
