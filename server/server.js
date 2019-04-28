@@ -47,9 +47,8 @@ mongoose.connect(db, {
 }).then(() => console.log("MongoDB connected."))
 .catch(error => console.log(error));
 
-
-
-
+// Static file declaration:
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Routes:
 app.use('/api/auth', auth);
@@ -68,8 +67,5 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
   });
 }
-
-// Static file declaration:
-app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
